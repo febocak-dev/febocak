@@ -1,0 +1,37 @@
+<div class="card mt-3">
+  <div class="card-header d-flex">
+    Clubes
+    <a routerLink="/clubes/add" class="text-primary ml-auto">
+      <i class="fa fa-plus-circle fa-2x"></i>
+    </a>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Logo</th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let registro of tabla">
+      <td routerLink="/clubes/edit/{{registro.id}}"> {{ registro.nombre }} </td>
+      <td routerLink="/clubes/edit/{{registro.id}}"> {{ registro.descripcion }} </td>
+      <td>
+        <a routerLink="/clubes/logo/{{registro.id}}" class="text-primary">
+          <i class="fa fa-picture-o fa-4x"> </i>
+        </a>
+      </td>
+      <td class="text-center">
+        <a routerLink="/clubes/delete/{{registro.id}}" class="text-danger">
+          <i class="fa fa-minus-circle fa-2x"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+
+</table>

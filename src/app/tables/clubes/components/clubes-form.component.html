@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+
+    <div class="card mt-3">
+      <div class="card-header" [ngClass]="templateData.cardHeaderStyle">
+        {{ templateData.titulo + " club" }}
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="miForm" (ngSubmit)="onSubmit(submitBtn)">
+
+          <div class="form-group">
+            <label for="nombre" class="control-label"> Nombre </label>
+            <input type="text" formControlName="nombre" [readonly]="templateData.titulo==='Eliminar'"
+              [class.is-invalid]="nombre.invalid && nombre.touched" class="form-control" />
+            <small class="text-danger" [class.d-none]="nombre.untouched || !nombre.hasError('required')">El nombre es requerido</small>
+            <small class="text-danger" [class.d-none]="nombre.untouched || !nombre.hasError('minlength')">La longitud mínima es 2</small>
+          </div>
+
+
+          <div class="form-group">
+            <label for="descripcion" class="control-label"> Descripción </label>
+            <input type="text" formControlName="descripcion" maxlength="80" [readonly]="templateData.titulo==='Eliminar'"
+              [class.is-invalid]="descripcion.invalid && descripcion.touched" class="form-control" />
+            <small class="text-danger" [class.d-none]="descripcion.untouched || !descripcion.hasError('required')">La descripción es requerida</small>
+            <small class="text-danger" [class.d-none]="descripcion.untouched || !descripcion.hasError('minlength')">La longitud mínima es 2</small>
+          </div>
+
+          <div class="form-group">
+            <label for="delegado" class="control-label"> Delegado </label>
+            <input type="text" formControlName="delegado" maxlength="80" [readonly]="templateData.titulo==='Eliminar'"
+              [class.is-invalid]="delegado.invalid && delegado.touched" class="form-control" />
+            <small class="text-danger" [class.d-none]="delegado.untouched || !delegado.hasError('required')">El delegado es requerido</small>
+            <small class="text-danger" [class.d-none]="delegado.untouched || !delegado.hasError('minlength')">La longitud mínima es 2</small>
+          </div>
+
+          <div class="form-group">
+            <label for="entrenador" class="control-label"> Entrenador </label>
+            <input type="text" formControlName="entrenador" maxlength="80" [readonly]="templateData.titulo==='Eliminar'"
+              [class.is-invalid]="entrenador.invalid && entrenador.touched" class="form-control" />
+            <small class="text-danger" [class.d-none]="entrenador.untouched || !entrenador.hasError('required')">El entrenador es requerido</small>
+            <small class="text-danger" [class.d-none]="entrenador.untouched || !entrenador.hasError('minlength')">La longitud mínima es 2</small>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <button [disabled]="!miForm.valid" #submitBtn
+                [ngClass]="templateData.titulo==='Eliminar' ? 'btn-danger' : 'btn-primary'"
+                type="submit" class="btn btn-block">
+                {{ templateData.titulo === 'Eliminar' ? 'Eliminar' : 'Aceptar' }}
+              </button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary btn-block" (click)="goBack()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
