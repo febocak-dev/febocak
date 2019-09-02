@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+
+    <div class="card mt-3">
+      <div class="card-header" [ngClass]="templateData.cardHeaderStyle">
+        {{ templateData.titulo + " categoría" }}
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="miForm" (ngSubmit)="onSubmit(submitBtn)">
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="desde" class="control-label"> Desde </label>
+                <input type="number" formControlName="desde" [readonly]="templateData.titulo==='Eliminar'"
+                  min="1900" max="2020"
+                  [class.is-invalid]="desde.invalid && desde.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="desde.untouched || !desde.hasError('required')">El campo desde es requerido</small>
+                <small class="text-danger" [class.d-none]="desde.untouched || !desde.hasError('min')">Debe colocar un valor mayor a 1900</small>
+                <small class="text-danger" [class.d-none]="desde.untouched || !desde.hasError('max')">Debe colocar un valor menor a 2020</small>
+              </div>
+
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="hasta" class="control-label"> hasta </label>
+                <input type="number" formControlName="hasta" [readonly]="templateData.titulo==='Eliminar'"
+                min="1900" max="2020"
+                  [class.is-invalid]="hasta.invalid && hasta.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="hasta.untouched || !hasta.hasError('required')">El campo hasta es requerido</small>
+                <small class="text-danger" [class.d-none]="hasta.untouched || !hasta.hasError('min')">Debe colocar un valor mayor a 1900</small>
+                <small class="text-danger" [class.d-none]="hasta.untouched || !hasta.hasError('max')">Debe colocar un valor menor a 2020</small>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="genero" class="control-label"> Genero </label>
+            <select formControlName="genero" required 
+              [class.is-invalid]="genero.invalid && genero.touched" class="custom-select" > 
+              <option value="genero"></option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+              <option value="Masculino y Femenino">Masculino y Femenino</option>
+            </select>
+            <small class="text-danger" [class.d-none]="genero.untouched || !genero.hasError('required')">El genero es requerido</small>
+            <small class="text-danger" [class.d-none]="genero.untouched || !genero.hasError('invalidGenero')">Seleccione el genero</small>
+          </div>
+
+          <div class="form-group">
+            <label for="categoria" class="control-label"> Categoría </label>
+            <input type="text" formControlName="categoria" maxlength="80" [readonly]="templateData.titulo==='Eliminar'"
+              [class.is-invalid]="categoria.invalid && categoria.touched" class="form-control" />
+            <small class="text-danger" [class.d-none]="categoria.untouched || !categoria.hasError('required')">La categoría es requerida</small>
+            <small class="text-danger" [class.d-none]="categoria.untouched || !categoria.hasError('minlength')">La longitud mínima es 3</small>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <button [disabled]="!miForm.valid" #submitBtn
+                [ngClass]="templateData.titulo==='Eliminar' ? 'btn-danger' : 'btn-primary'"
+                type="submit" class="btn btn-block">
+                {{ templateData.titulo === 'Eliminar' ? 'Eliminar' : 'Aceptar' }}
+              </button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary btn-block" (click)="goBack()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="card mt-3">
+  <div class="card-header d-flex">
+    Categorías
+    <a routerLink="/categorias/add" class="text-primary ml-auto">
+      <i class="fa fa-plus-circle fa-2x"></i>
+    </a>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th> Desde </th>
+      <th> Hasta </th>
+      <th> Genero </th>
+      <th> Categoría </th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let registro of tabla">
+      <td routerLink="/categorias/edit/{{registro.id}}"> {{ registro.desde }} </td>
+      <td routerLink="/categorias/edit/{{registro.id}}"> {{ registro.hasta }} </td>
+      <td routerLink="/categorias/edit/{{registro.id}}"> {{ registro.genero }} </td>
+      <td routerLink="/categorias/edit/{{registro.id}}"> {{ registro.categoria }} </td>
+      <td class="text-center">
+        <a routerLink="/categorias/delete/{{registro.id}}" class="text-danger">
+          <i class="fa fa-minus-circle fa-2x"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
