@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+
+    <div class="card mt-3">
+      <div class="card-header" [ngClass]="templateData.cardHeaderStyle">
+        {{ templateData.titulo + " Palista" }}
+
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="miForm" (ngSubmit)="onSubmit(submitBtn)">
+
+          <div class="row">
+            <div class="col col-6">
+              <div class="form-group">
+                <label for="nombre" class="control-label"> Nombre </label>
+                <input type="text" formControlName="nombre" [readonly]="templateData.titulo==='Eliminar'" required maxlength="30"
+                  [class.is-invalid]="nombre.invalid && nombre.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="nombre.untouched || !nombre.hasError('required')">El nombre
+                  es requerido</small>
+                <small class="text-danger" [class.d-none]="nombre.untouched || !nombre.hasError('minlength')">La
+                  longitud mínima es 2</small>
+              </div>
+            </div>
+
+            <div class="col col-6">
+              <div class="form-group">
+                <label for="apellido" class="control-label"> Apellido </label>
+                <input type="text" formControlName="apellido" [readonly]="templateData.titulo==='Eliminar'" required maxlength="30"
+                  [class.is-invalid]="apellido.invalid && apellido.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="apellido.untouched || !apellido.hasError('required')">El
+                  apellido es requerido</small>
+                <small class="text-danger" [class.d-none]="apellido.untouched || !apellido.hasError('minlength')">La
+                  longitud mínima es 2</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="DNI" class="control-label"> DNI </label>
+                <input type="text" formControlName="dni" [readonly]="templateData.titulo==='Eliminar'" required maxlength="8"
+                  [class.is-invalid]="dni.invalid && dni.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="dni.untouched || !dni.hasError('required')">El DNI es
+                  requerido</small>
+                <small class="text-danger" [class.d-none]="dni.untouched || !dni.hasError('minlength')">La longitud
+                  mínima es 8</small>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="genero" class="control-label"> Genero </label>
+                <select formControlName="genero" required (change)="buscarCategoria(fnacimiento.value, genero.value)"
+                  [class.is-invalid]="genero.invalid && genero.touched" class="custom-select">
+                  <option value="genero"></option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                </select>
+                <small class="text-danger" [class.d-none]="genero.valid || genero.untouched">El genero es
+                  requerido</small>
+                <small class="text-danger"
+                  [class.d-none]="genero.untouched || !genero.hasError('invalidGenero')">Seleccione el genero</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="fnacimiento" class="control-label"> F. nacimiento </label>
+                <input type="date" formControlName="fnacimiento" [readonly]="templateData.titulo==='Eliminar'" required
+                  (change)="buscarCategoria(fnacimiento.value, genero.value)"
+                  [class.is-invalid]="fnacimiento.invalid && fnacimiento.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="fnacimiento.valid || fnacimiento.untouched">La fecha de
+                  nacimiento es requerida</small>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="categoria" class="control-label"> Categoría </label>
+                <input type="text" formControlName="categoria" [readonly]="true" required
+                  [class.is-invalid]="(categoria.invalid && categoria.touched)   || categoria.value == 'No se encontró'"
+                  class="form-control" />
+                <small class="text-danger" [class.d-none]="categoria.valid || fnacimiento.untouched">La categoría es
+                  requerida</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="club" class="control-label"> Club </label>
+            <select formControlName="club" required [class.is-invalid]="club.invalid && club.touched"
+              class="custom-select">
+              <option value="club"></option>
+              <option [value]="registro.nombre" *ngFor="let registro of tblClubes">{{ registro.nombre }}</option>
+            </select>
+            <small class="text-danger" [class.d-none]="club.untouched || !club.hasError('required')">El club es
+              requerido</small>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <button [disabled]="!miForm.valid" #submitBtn
+                [ngClass]="templateData.titulo==='Eliminar' ? 'btn-danger' : 'btn-primary'"
+                type="submit" class="btn btn-block">
+                {{ templateData.titulo === 'Eliminar' ? 'Eliminar' : 'Aceptar' }}
+              </button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary btn-block" (click)="goBack()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
