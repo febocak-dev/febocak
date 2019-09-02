@@ -12,12 +12,14 @@ const routes: Routes = [
   { path: 'home', resolve: { competenciaData: HomeResolver }, component: HomeComponent },
   { path: 'error', component: ErrorComponent },
   { path: 'login', component: LoginComponent },
-  /* { path: 'usuarios', loadChildren: './tables/usuarios/usuarios.module#UsuariosModule' }, 
+  { path: 'usuarios', loadChildren: './tables/usuarios/usuarios.module#UsuariosModule' }, 
+  /*
   { path: 'categorias', loadChildren: './tables/categorias/categorias.module#CategoriasModule' },
   { path: 'clubes', loadChildren: './tables/clubes/clubes.module#ClubesModule' },
   { path: 'competencias', loadChildren: './tables/competencias/competencias.module#CompetenciasModule' },
   { path: 'distancias', loadChildren: './tables/distancias/distancias.module#DistanciasModule' },
-  { path: 'palistas', loadChildren: './tables/palistas/palistas.module#PalistasModule' } */
+  { path: 'palistas', loadChildren: './tables/palistas/palistas.module#PalistasModule' }
+   */
   // { path: '**', component: NotFoundComponent }
   //{ path: '', redirectTo: '/', pathMatch: 'full' }
 ];

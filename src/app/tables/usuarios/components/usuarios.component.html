@@ -1,0 +1,35 @@
+<div class="card mt-3">
+  <div class="card-header d-flex">
+    Usuarios
+    <a routerLink="/usuarios/add" class="text-primary ml-auto">
+      <i class="fa fa-plus-circle fa-2x"></i>
+    </a>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th> Nombre </th>
+      <th> Email </th>
+      <th> Rol </th>
+      <th> Club </th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let registro of tabla">
+      <td routerLink="/usuarios/edit/{{registro.id}}"> {{ registro.name }} </td>
+      <td routerLink="/usuarios/edit/{{registro.id}}"> {{ registro.email }} </td>
+      <td routerLink="/usuarios/edit/{{registro.id}}"> {{ registro.rol }} </td>
+      <td routerLink="/usuarios/edit/{{registro.id}}"> {{ registro.club }} </td>
+      <td class="text-center">
+        <a routerLink="/usuarios/delete/{{registro.id}}" class="text-danger">
+          <i class="fa fa-minus-circle fa-2x"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
