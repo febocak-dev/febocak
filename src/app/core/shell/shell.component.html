@@ -1,8 +1,17 @@
 <app-spinner [loading$]="loading$" ></app-spinner>
-    
-<app-navbar
-  [usuario]="usuario$ | async" (emitLogout)="onLogout()" >
-</app-navbar>
+
+<ng-container [ngSwitch]="modulo">
+  <app-navbar-admin *ngSwitchCase = "'Admininstración'"
+    [usuario]="usuario$ | async" (emitLogout)="onLogout()" >
+  </app-navbar-admin>
+
+  <app-navbar-inscripcion *ngSwitchCase = "'Inscripciones'"
+    [usuario]="usuario$ | async" (emitLogout)="onLogout()" >
+  </app-navbar-inscripcion>
+
+</ng-container>
+
+
   
 <app-message></app-message>
   

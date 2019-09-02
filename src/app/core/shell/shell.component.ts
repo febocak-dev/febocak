@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { SpinnerService } from '@core/spinner/spinner.service';
 import { UserI } from '@models/user';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-shell',
   templateUrl: './shell.component.html',
@@ -14,6 +16,7 @@ import { UserI } from '@models/user';
 export class ShellComponent implements OnInit {
   public usuario$: Observable<UserI>; 
   public loading$: Observable<boolean>;
+  public modulo = environment.modulo;
 
   constructor(
     private authService: AuthService, 

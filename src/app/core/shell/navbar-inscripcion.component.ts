@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-navbar-inscripcion',
+  templateUrl: './navbar-inscripcion.component.html',
+  styles: ['']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarInscripcionComponent implements OnInit {
   @Input() usuario;
   @Output() emitLogout = new EventEmitter<string>();
   

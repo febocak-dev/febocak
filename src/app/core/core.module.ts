@@ -9,7 +9,8 @@ import { ErrorComponent } from './error/error.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { MessageComponent } from './message/message.component';
 import { ShellComponent } from './shell/shell.component';
-import { NavbarComponent } from './shell/navbar.component';
+import { NavbarAdminComponent } from './shell/navbar-admin.component';
+import { NavbarInscripcionComponent } from './shell/navbar-inscripcion.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
@@ -20,8 +21,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     NotFoundComponent, ErrorComponent, 
     SpinnerComponent, MessageComponent,
-    ShellComponent, NavbarComponent, HomeComponent,
-    LoginComponent 
+    ShellComponent, NavbarAdminComponent, NavbarInscripcionComponent,
+    HomeComponent, LoginComponent 
   ],
   imports: [
     CommonModule, RouterModule,

@@ -11,7 +11,8 @@ export const environment = {
     projectId: "fobokac-01",
     storageBucket: "fobokac-01.appspot.com",
     messagingSenderId: "1019734820364"
-  }
+  },
+  modulo: 'Inscripciones'
 };
 
 /*
