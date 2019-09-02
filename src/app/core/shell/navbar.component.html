@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-success">
+  <img class="mr-4" src="assets/img/icono.png" />
+  <a class="navbar-brand" routerLink="/home">
+    <h4> <strong>SISRIRCO</strong> - Administración </h4>
+    <h6> <strong>FeBoCaK</strong> Federación Bonairense de Canoas y Kayaks</h6>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu"
+    aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navMenu">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="!usuario">
+        <a class="nav-link" routerLink="/login" routerLinkActive="active"> <strong>Ingresar</strong> </a>
+      </li>
+
+      <li class="nav-item dropdown" *ngIf="!!usuario">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-table"></i>&nbsp; Tablas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a *ngIf="usuario.rol == 'Administración'" class="dropdown-item" routerLink="/usuarios"
+            routerLinkActive="active"> <strong>Usuarios</strong> </a>
+
+          <a *ngIf="usuario.rol == 'Administración'" class="dropdown-item" routerLink="/clubes"
+            routerLinkActive="active"> <strong>Clubes</strong> </a>
+
+          <a *ngIf="usuario.rol == 'Administración'" class="dropdown-item" routerLink="/categorias"
+            routerLinkActive="active"> <strong>Categorías</strong> </a>
+
+          <a *ngIf="usuario.rol == 'Administración'" class="dropdown-item" routerLink="/competencias"
+            routerLinkActive="active"> <strong>Competencias</strong> </a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown" *ngIf="!!usuario">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-folder"></i>&nbsp; Procesos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item" routerLink="/palistas" routerLinkActive="active"> <strong>Palistas</strong> </a>
+          <a class="dropdown-item" routerLink="/inscripciones" routerLinkActive="active"> <strong>Inscripciones</strong></a>
+          <a class="dropdown-item" routerLink="/consultar-inscripciones" routerLinkActive="active"> <strong>Consultar Inscripciones</strong></a>
+          <a class="dropdown-item" routerLink="/consola" routerLinkActive="active"> <strong>Consola</strong> </a>
+
+        </div>
+      </li>
+
+      <li class="nav-item dropdown" *ngIf="!!usuario">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{ usuario.name }} &nbsp; <i class="fa fa-user"></i>&nbsp;
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/profile"> <strong>Perfil</strong> </a>
+          <a class="dropdown-item" (click)="onLogout()"> <strong>Salir</strong> </a>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>

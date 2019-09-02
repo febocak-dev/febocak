@@ -1,0 +1,7 @@
+<div class="alert alert-dismissable mt-2"  *ngIf="(message$ | async) as alertMessage" 
+  [ngClass]="alertMessage.class">
+  <button class="close" (click)="closeAlert()">
+    &times;
+  </button>
+  {{ alertMessage.message }}
+</div>
