@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+
+    <div class="card mt-3">
+      <div class="card-header" [ngClass]="templateData.cardHeaderStyle">
+        {{ templateData.titulo + " Compentencia" }}
+        
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="miForm" (ngSubmit)="onSubmit(submitBtn)">
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="desde" class="control-label"> Desde </label>
+                <input type="date" formControlName="desde" [readonly]="templateData.titulo==='Eliminar'"
+                  [class.is-invalid]="desde.invalid && desde.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="desde.untouched || !desde.hasError('required')">El campo desde es requerido</small>
+              </div>
+
+            </div>
+
+            <div class="col-6">
+              <div class="form-group">
+                <label for="hasta" class="control-label"> hasta </label>
+                <input type="date" formControlName="hasta" [readonly]="templateData.titulo==='Eliminar'"
+                  [class.is-invalid]="hasta.invalid && hasta.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="hasta.untouched || !hasta.hasError('required')">El campo hasta es requerido</small>
+              </div>
+
+            </div>
+
+          </div>
+
+              <div class="form-group">
+                <label for="competencia" class="control-label"> Descripción </label>
+                <input type="text" formControlName="competencia" [readonly]="templateData.titulo==='Eliminar'" required maxlength="80"
+                  [class.is-invalid]="competencia.invalid && competencia.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="competencia.untouched || !competencia.hasError('required')">La descripción es requerida</small>
+                <small class="text-danger" [class.d-none]="competencia.untouched || !competencia.hasError('minlength')">La longitud mínima es 2</small>
+              </div>
+
+          <div class="form-group">
+            <label for="club" class="control-label"> Club </label>
+            <select formControlName="club" required
+              [class.is-invalid]="club.invalid && club.touched" class="custom-select">
+              <option value="club"></option>
+              <option [value]="registro.nombre" *ngFor="let registro of tblClubes" >{{ registro.nombre }}</option>
+            </select>
+            <small class="text-danger" [class.d-none]="club.untouched || !club.hasError('required')">El club es requerido</small>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <button [disabled]="!miForm.valid" #submitBtn
+                [ngClass]="templateData.titulo==='Eliminar' ? 'btn-danger' : 'btn-primary'"
+                type="submit" class="btn btn-block">
+                {{ templateData.titulo === 'Eliminar' ? 'Eliminar' : 'Aceptar' }}
+              </button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary btn-block" (click)="goBack()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

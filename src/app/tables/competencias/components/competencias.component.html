@@ -1,0 +1,41 @@
+<div class="card mt-3">
+  <div class="card-header d-flex">
+    Competencias
+    <a routerLink="/competencias/add" class="text-primary ml-auto">
+      <i class="fa fa-plus-circle fa-2x"></i>
+    </a>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th> Desde </th>
+      <th> Hasta </th>
+      <th> Competencia </th>
+      <th> Club </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let registro of tabla">
+      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.desde }} </td>
+      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.hasta }} </td>
+      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.competencia }} </td>
+      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.club }} </td>
+      <td class="text-center">
+        <a routerLink="/distancias/{{registro.id}}" class="text-primary">
+          <i class="fa fa-cogs fa-2x"></i>
+        </a>
+      </td>
+      <td class="text-center">
+        <a routerLink="/competencias/delete/{{registro.id}}" class="text-danger">
+          <i class="fa fa-minus-circle fa-2x"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
