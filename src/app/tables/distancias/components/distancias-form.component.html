@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-lg-3">
+    <app-competencia-info
+      [competencia]="competencia"
+    ></app-competencia-info>
+  </div>
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+
+    <div class="card mt-3">
+      <div class="card-header" [ngClass]="templateData.cardHeaderStyle">
+        {{ templateData.titulo + " distancia" }}
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="miForm" (ngSubmit)="onSubmit(submitBtn)">
+
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="categoria" class="control-label"> Categoría </label>
+                <select formControlName="categoria" required
+                  [class.is-invalid]="categoria.invalid && categoria.touched" class="custom-select">
+                  <option value="categoria"></option>
+                  <option [value]="registro.categoria" *ngFor="let registro of tblCategoria" >{{ registro.categoria }}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="categoria.untouched || !categoria.hasError('required')">La categoría es requerida</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="embarcacion" class="control-label"> Embarcación </label>
+                <select formControlName="embarcacion" required
+                  [class.is-invalid]="embarcacion.invalid && embarcacion.touched" class="custom-select">
+                  <option value="embarcacion"></option>
+                  <option value="K1">K1</option>
+                  <option value="K2">K2</option>
+                  <option value="K4">K4</option>
+                  <option value="430">430</option>
+                  <option value="canoa">Canoa</option>
+                </select>
+                <small class="text-danger" [class.d-none]="embarcacion.untouched || !embarcacion.hasError('required')">El tipo de embarcación es requerido</small>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="distancia" class="control-label"> Distancia </label>
+                <input type="text" formControlName="distancia" maxlength="80" [readonly]="templateData.titulo==='Eliminar'"
+                  [class.is-invalid]="distancia.invalid && distancia.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="distancia.untouched || !distancia.hasError('required')">La distancia es requerida</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <button [disabled]="!miForm.valid" #submitBtn
+                [ngClass]="templateData.titulo==='Eliminar' ? 'btn-danger' : 'btn-primary'"
+                type="submit" class="btn btn-block">
+                {{ templateData.titulo === 'Eliminar' ? 'Eliminar' : 'Aceptar' }}
+              </button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary btn-block" (click)="goBack()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

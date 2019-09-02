@@ -1,0 +1,16 @@
+<div class="card mt-3">
+  <div class="card-header">
+    Compentencia
+  </div>
+
+  <div class="card-body">
+    <p>{{ competencia.competencia }}</p>
+    <p>Desde: {{ competencia.desde }} hasta: {{ competencia.hasta }} </p>
+    <p>{{ competencia.club }}</p>
+    
+    <button class="btn btn-block btn-secondary" (click)="goBack()">
+      Regresar
+    </button>
+
+  </div>
+</div>
