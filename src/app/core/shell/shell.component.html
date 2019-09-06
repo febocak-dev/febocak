@@ -1,7 +1,7 @@
 <app-spinner [loading$]="loading$" ></app-spinner>
 
 <ng-container [ngSwitch]="modulo">
-  <app-navbar-admin *ngSwitchCase = "'Admininstración'"
+  <app-navbar-admin *ngSwitchCase = "'Administración'"
     [usuario]="usuario$ | async" (emitLogout)="onLogout()" >
   </app-navbar-admin>
 

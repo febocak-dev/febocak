@@ -14,10 +14,19 @@ export class CrudService {
   constructor(private afs: AngularFirestore) {
   }
 
+  queryByField$<T extends RecordI>(tableName: string, field:string, queryValue: string): Observable<T[]> {
+    let collection = this.afs.collection<T>(tableName, ref => ref.where(field, '==', queryValue));
+    return collection.snapshotChanges().pipe(
+      map(changes => {
+        return changes.map(action => {
+          const data = action.payload.doc.data() as T;
+          data.id = action.payload.doc.id;
+          return data;
+        });
+      })
+    );
+  }
   getAllRecords$<T extends RecordI>(tableName: string, sort=''): Observable<T[]> {
-  console.log('TCL: CrudService -> tableName', tableName)
-  console.log('TCL: CrudService -> sort', sort)
-    
     let collection: AngularFirestoreCollection;
     if (sort) {
       collection = this.afs.collection(tableName, ref => ref.orderBy(sort) );
@@ -36,6 +45,9 @@ export class CrudService {
   }
 
   getRecord$<T extends RecordI>(tableName: string, id: string): Observable<T> {
+    if (tableName === 'competencias') {
+      console.log('get record competencia Id', id);
+    }
     return this.afs.doc<T>(`${tableName}/${id}`).valueChanges();
   }
 

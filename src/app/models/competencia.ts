@@ -1,5 +1,6 @@
 export interface CompetenciaI {
   id?: string;
+  idCompetencia?: string;
   competencia?: string;
   desde?: string;
   hasta?: string;

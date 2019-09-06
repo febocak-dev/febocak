@@ -13,6 +13,7 @@ export const environment = {
     messagingSenderId: "1019734820364"
   },
   modulo: 'Inscripciones'
+  // modulo: 'Inscripciones'
 };
 
 /*

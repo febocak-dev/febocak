@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+
+    <div class="card mt-3">
+      <div class="card-header" [ngClass]="templateData.cardHeaderStyle">
+        {{ templateData.titulo + " inscipción" }}
+        
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="miForm" (ngSubmit)="onSubmit(submitBtn)">
+
+          <div class="row">
+            <div class="col-9">
+              <div class="form-group">
+                <label for="palista" class="control-label"> Palista </label>
+                <select formControlName="palista" required
+                  [class.is-invalid]="palista.invalid && palista.touched" class="custom-select"
+                  (change)="selectPalista(palista.value)">
+                  <option value=""></option>
+                  <option [value]="registro.palista" *ngFor="let registro of tblPalistas" >{{ registro.palista }}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="palista.untouched || !palista.hasError('required')">El palista es requerido</small>
+              </div>
+
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="genero" class="control-label"> Genero </label>
+                    <input type="text" formControlName="genero" [readonly]="true" required
+                      [class.is-invalid]="(genero.invalid && genero.touched)"
+                      class="form-control" />
+                    <small class="text-danger" [class.d-none]="genero.valid || genero.untouched">El genero es requerido</small>
+                  </div>
+                </div>
+  
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="categoria" class="control-label"> Categoría </label>
+                    <input type="text" formControlName="categoria" [readonly]="true" required
+                      [class.is-invalid]="(categoria.invalid && categoria.touched)"
+                      class="form-control" />
+                    <small class="text-danger" [class.d-none]="categoria.valid || categoria.untouched">La categoría es requerida</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="club" class="control-label"> Club </label>
+                <select formControlName="club" required 
+                  [class.is-invalid]="club.invalid && club.touched" class="custom-select">
+                  <option value=""></option>
+                  <option [value]="registro.nombre" *ngFor="let registro of tblClubes" >{{ registro.nombre }}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="club.untouched || !club.hasError('required')">El club es requerido</small>
+              </div>
+            </div>
+          
+            <div class="col-3">
+              <div class="form-group">
+                <label for="distancia" class="control-label"> Distancia </label>
+                <select multiple #selectDistancia formControlName="distancia" required size="9"
+                  [class.is-invalid]="distancia.invalid && distancia.touched" class="custom-select" >
+                  <option [value]="registro.embarcacion + ' ' + registro.distancia" 
+                    *ngFor="let registro of tblDistancias" >{{ registro.embarcacion + ' ' + registro.distancia }}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="distancia.untouched || !distancia.hasError('required')">La distancia es requerida</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <button [disabled]="!miForm.valid" #submitBtn
+                [ngClass]="templateData.titulo==='Eliminar' ? 'btn-danger' : 'btn-primary'"
+                type="submit" class="btn btn-block">
+                {{ templateData.titulo === 'Eliminar' ? 'Eliminar' : 'Aceptar' }}
+              </button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-secondary btn-block" (click)="goBack()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

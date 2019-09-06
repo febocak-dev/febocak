@@ -1,0 +1,37 @@
+<div class="card mt-3">
+  <div class="card-header d-flex">
+    Inscripciones
+    <a routerLink="/inscripciones/add" class="text-primary ml-auto">
+      <i class="fa fa-plus-circle fa-2x"></i>
+    </a>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>DNI </th>
+      <th>Nombre </th>
+      <th>Genero</th>
+      <th>Categoría</th>
+      <th>Carrera</th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let registro of tabla">
+      <td routerLink="/inscripciones/edit/{{registro.id}}"> {{ registro.dni }} </td>
+      <td routerLink="/inscripciones/edit/{{registro.id}}"> {{ registro.palista }} </td>
+      <td routerLink="/inscripciones/edit/{{registro.id}}"> {{ registro.genero }} </td>
+      <td routerLink="/inscripciones/edit/{{registro.id}}"> {{ registro.categoria }} </td>
+      <td routerLink="/inscripciones/edit/{{registro.id}}"> {{ registro.distancia }} </td>
+      <td>
+        <a routerLink="/inscripciones/delete/{{registro.id}}" class="text-danger ml-auto">
+          <i class="fa fa-minus-circle fa-2x"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+
+</table>
