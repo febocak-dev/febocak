@@ -15,6 +15,6 @@ export class CategoriasFormResolver implements Resolve<CategoriaI> {
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<CategoriaI> {
     const id = route.paramMap.get('id');
-    return  this.crudService.getRecord$('categorias',id).pipe(first());
+    return  this.crudService.getRecord$('categorias',id);
   }
 }

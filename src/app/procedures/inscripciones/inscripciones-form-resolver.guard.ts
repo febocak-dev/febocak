@@ -22,17 +22,17 @@ export class InscripcionesFormResolver
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
     Observable<[InscripcionI, ClubI[], CategoriaI[], PalistaI[], InscripcionI[], CompetenciaI]> {
-    
-    const competencia = this.crudService.getRecord$<CompetenciaI>('consola','01').pipe(first());
+    //TODO: el ID de competencia está fijo. Colocar el que corresponda
+    const competencia = this.crudService.getRecord$<CompetenciaI>('consola','01');
     const club = this.authService.getUser().club;
     const id = route.paramMap.get('id');
     const allData$ = forkJoin(
-      this.crudService.getRecord$('inscripciones',id).pipe(first()),
-      this.crudService.getAllRecords$('clubes','nombre').pipe(first()),
-      this.crudService.getAllRecords$('categorias','desde').pipe(first()),
-      this.crudService.queryByField$('palistas','club',club).pipe(first()),
-      this.crudService.queryByField$('inscripciones','club',club).pipe(first()),
-      this.crudService.getRecord$('competencias','lJBIk7KClZmifrIrSysT').pipe(first())
+      this.crudService.getRecord$('inscripciones',id),
+      this.crudService.getAllRecords$('clubes','nombre'),
+      this.crudService.getAllRecords$('categorias','desde'),
+      this.crudService.queryByField$('palistas','club',club),
+      this.crudService.queryByField$('inscripciones','club',club),
+      this.crudService.getRecord$('competencias','lJBIk7KClZmifrIrSysT')
     );
     
     return allData$;

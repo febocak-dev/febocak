@@ -15,6 +15,6 @@ export class DistanciasResolver implements Resolve<CompetenciaI> {
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<CompetenciaI> {
     const id = route.paramMap.get('idCompetencia');
-    return this.crudService.getRecord$('competencias',id).pipe(first());
+    return this.crudService.getRecord$('competencias',id);
   }
 }

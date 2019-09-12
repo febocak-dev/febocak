@@ -17,8 +17,8 @@ export class DistanciasFormResolver  implements Resolve<[CompetenciaI, Categoria
           state: RouterStateSnapshot): Observable<[CompetenciaI, CategoriaI[]]> {
     const idCompetencia = route.paramMap.get('idCompetencia');
     const allData$ = forkJoin(
-      this.crudService.getRecord$('competencias', idCompetencia).pipe(first()),
-      this.crudService.getAllRecords$('categorias','categoria').pipe(first())
+      this.crudService.getRecord$('competencias', idCompetencia),
+      this.crudService.getAllRecords$('categorias','categoria')
     );
     
     return allData$;

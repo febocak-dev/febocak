@@ -15,6 +15,6 @@ export class PalistasResolver implements Resolve<PalistaI[]> {
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<PalistaI[]> {
             console.log('Palistas resolver')
-    return this.crudService.getAllRecords$('palistas','palista').pipe(first());
+    return this.crudService.getAllRecords$('palistas','palista');
   }
 }

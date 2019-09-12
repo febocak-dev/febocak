@@ -14,6 +14,6 @@ export class ClubesResolver implements Resolve<ClubI[]> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<ClubI[]> {
-    return this.crudService.getAllRecords$('clubes','nombre').pipe(first());
+    return this.crudService.getAllRecords$('clubes','nombre');
   }
 }

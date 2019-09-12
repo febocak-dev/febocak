@@ -14,6 +14,6 @@ export class CompetenciasResolver implements Resolve<ClubI[]> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<ClubI[]> {
-    return this.crudService.getAllRecords$('competencias','competencia').pipe(first());
+    return this.crudService.getAllRecords$('competencias','competencia');
   }
 }

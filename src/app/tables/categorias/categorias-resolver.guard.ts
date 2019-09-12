@@ -14,6 +14,6 @@ export class CategoriasResolver implements Resolve<CategoriaI[]> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<CategoriaI[]> {
-    return this.crudService.getAllRecords$('categorias','desde').pipe(first());
+    return this.crudService.getAllRecords$('categorias','desde');
   }
 }

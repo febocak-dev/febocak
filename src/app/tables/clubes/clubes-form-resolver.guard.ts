@@ -15,6 +15,6 @@ export class ClubesFormResolver implements Resolve<ClubI> {
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<ClubI> {
     const id = route.paramMap.get('id');
-    return  this.crudService.getRecord$('clubes',id).pipe(first());
+    return  this.crudService.getRecord$('clubes',id);
   }
 }

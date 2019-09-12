@@ -17,8 +17,8 @@ export class CompetenciasFormResolver implements Resolve<[CompetenciaI, ClubI[]]
           state: RouterStateSnapshot): Observable<[CompetenciaI, ClubI[]]> {
     const id = route.paramMap.get('id');
     const allData$ = forkJoin(
-      this.crudService.getRecord$('competencias',id).pipe(first()),
-      this.crudService.getAllRecords$('clubes','nombre').pipe(first())
+      this.crudService.getRecord$('competencias',id),
+      this.crudService.getAllRecords$('clubes','nombre')
     );
     
     return allData$;

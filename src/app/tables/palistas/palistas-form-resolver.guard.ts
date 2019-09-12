@@ -18,9 +18,9 @@ export class PalistasFormResolver implements Resolve<[PalistaI, ClubI[], Categor
           state: RouterStateSnapshot): Observable<[PalistaI, ClubI[], CategoriaI[]]> {
     const id = route.paramMap.get('id');
     const allData$ = forkJoin(
-      this.crudService.getRecord$('palistas',id).pipe(first()),
-      this.crudService.getAllRecords$('clubes','nombre').pipe(first()),
-      this.crudService.getAllRecords$('categorias','desde').pipe(first())
+      this.crudService.getRecord$('palistas',id),
+      this.crudService.getAllRecords$('clubes','nombre'),
+      this.crudService.getAllRecords$('categorias','desde')
     );
     
     return allData$;

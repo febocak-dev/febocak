@@ -14,7 +14,7 @@ export class HomeResolver implements Resolve<CompetenciaI> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<CompetenciaI> {
-    const data = this.dataService.getRecord$<CompetenciaI>('consola','01').pipe(first());
+    const data = this.dataService.getRecord$<CompetenciaI>('consola','01');
     return data;
   }
 }

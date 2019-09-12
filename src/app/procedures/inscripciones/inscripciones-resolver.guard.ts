@@ -16,6 +16,6 @@ export class InscripcionesResolver implements Resolve<InscripcionI[]> {
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<InscripcionI[]> {
     const club = this.authService.getUser().club;
-    return this.crudService.queryByField$('inscripciones','club',club).pipe(first());
+    return this.crudService.queryByField$('inscripciones','club',club);
   }
 }

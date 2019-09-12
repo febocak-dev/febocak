@@ -23,9 +23,11 @@ export class CrudService {
           data.id = action.payload.doc.id;
           return data;
         });
-      })
+      }),
+      first()
     );
   }
+  
   getAllRecords$<T extends RecordI>(tableName: string, sort=''): Observable<T[]> {
     let collection: AngularFirestoreCollection;
     if (sort) {
@@ -40,7 +42,8 @@ export class CrudService {
           data.id = action.payload.doc.id;
           return data;
         });
-      })
+      }),
+      first()
     );
   }
 
@@ -48,12 +51,15 @@ export class CrudService {
     if (tableName === 'competencias') {
       console.log('get record competencia Id', id);
     }
-    return this.afs.doc<T>(`${tableName}/${id}`).valueChanges();
+    return this.afs.doc<T>(`${tableName}/${id}`).valueChanges().pipe(first());
   }
 
   getRecordByField$<T extends RecordI>(tableName:string, field:string, searchValue: string) {
     return this.afs.collection<T>(tableName, ref => ref.where(field, '==', searchValue)).valueChanges()
-      .pipe( flatMap( data => data) );
+      .pipe( 
+        flatMap( data => data), 
+        first()
+    );
   }
   
   addRecord$<T extends RecordI>(tableName: string, registro: T) {

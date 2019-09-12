@@ -14,6 +14,6 @@ export class UsuariosResolver implements Resolve<UserI[]> {
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<UserI[]> {
-    return this.crudService.getAllRecords$('users','name').pipe(first());
+    return this.crudService.getAllRecords$('users','name');
   }
 }

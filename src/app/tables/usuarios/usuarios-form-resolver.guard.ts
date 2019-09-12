@@ -17,8 +17,8 @@ export class UsuariosFormResolver implements Resolve<[UserI, ClubI[]]> {
           state: RouterStateSnapshot): Observable<[UserI, ClubI[]]> {
     const id = route.paramMap.get('id');
     const allData$ = forkJoin(
-      this.crudService.getRecord$('users',id).pipe(first()),
-      this.crudService.getAllRecords$('clubes','nombre').pipe(first())
+      this.crudService.getRecord$('users',id),
+      this.crudService.getAllRecords$('clubes','nombre')
     );
     
     return allData$;
