@@ -12,14 +12,14 @@ const routes: Routes = [
   { path: 'home', resolve: { competenciaData: HomeResolver }, component: HomeComponent },
   { path: 'error', component: ErrorComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'usuarios', loadChildren: './tables/usuarios/usuarios.module#UsuariosModule' }, 
+  { path: 'usuarios', loadChildren: () => import('./tables/usuarios/usuarios.module').then(m => m.UsuariosModule)},
   { path: 'categorias', loadChildren: './tables/categorias/categorias.module#CategoriasModule' },
-  { path: 'clubes', loadChildren: './tables/clubes/clubes.module#ClubesModule' },
-  { path: 'competencias', loadChildren: './tables/competencias/competencias.module#CompetenciasModule' },
-  { path: 'distancias', loadChildren: './tables/distancias/distancias.module#DistanciasModule' },
-  { path: 'palistas', loadChildren: './tables/palistas/palistas.module#PalistasModule' },
-  { path: 'inscripciones', loadChildren: './procedures/inscripciones/inscripciones.module#InscripcionesModule' },
-  { path: 'backup', loadChildren: './util/backup/backup.module#BackupModule'}
+  { path: 'clubes', loadChildren: () => import('./tables/clubes/clubes.module').then(m => m.ClubesModule) },
+  { path: 'competencias', loadChildren: () => import('./tables/competencias/competencias.module').then(m => m.CompetenciasModule) },
+  { path: 'distancias', loadChildren: () => import('./tables/distancias/distancias.module').then(m => m.DistanciasModule) },
+  { path: 'palistas', loadChildren: () => import('./tables/palistas/palistas.module').then(m => m.PalistasModule) },
+  { path: 'inscripciones', loadChildren: () => import('./procedures/inscripciones/inscripciones.module').then(m => m.InscripcionesModule) },
+  { path: 'backup', loadChildren: () => import('./util/backup/backup.module').then(m => m.BackupModule) }
   // { path: '**', component: NotFoundComponent }
   //{ path: '', redirectTo: '/', pathMatch: 'full' }
 ];
