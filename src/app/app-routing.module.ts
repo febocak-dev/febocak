@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'competencias', loadChildren: './tables/competencias/competencias.module#CompetenciasModule' },
   { path: 'distancias', loadChildren: './tables/distancias/distancias.module#DistanciasModule' },
   { path: 'palistas', loadChildren: './tables/palistas/palistas.module#PalistasModule' },
-  { path: 'inscripciones', loadChildren: './procedures/inscripciones/inscripciones.module#InscripcionesModule' }
+  { path: 'inscripciones', loadChildren: './procedures/inscripciones/inscripciones.module#InscripcionesModule' },
+  { path: 'backup', loadChildren: './util/backup/backup.module#BackupModule'}
   // { path: '**', component: NotFoundComponent }
   //{ path: '', redirectTo: '/', pathMatch: 'full' }
 ];
