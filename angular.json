@@ -86,6 +86,38 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "inscripcion-1": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.inscripcion-1.ts"
+                }
+              ]
+            },
+            "inscripcion-2": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.inscripcion-2.ts"
+                }
+              ]
+            },
+            "administracion-1": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.administracion-1.ts"
+                }
+              ]              
+            },
+            "administracion-2": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.administracion-2.ts"
+                }
+              ]              
             }
           }
         },
@@ -97,6 +129,18 @@
           "configurations": {
             "production": {
               "browserTarget": "febocak01:build:production"
+            },
+            "inscripcion-1": {
+              "browserTarget": "febocak01:build:inscripcion-1"
+            },
+            "inscripcion-2": {
+              "browserTarget": "febocak01:build:inscripcion-2"
+            },
+            "administracion-1": {
+              "browserTarget": "febocak01:build:administracion-1"
+            },
+            "administracion-2": {
+              "browserTarget": "febocak01:build:administracion-2"
             }
           }
         },
