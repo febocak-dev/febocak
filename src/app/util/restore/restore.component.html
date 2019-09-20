@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+    <div class="card mt-3">
+      <div class="card-header">
+        Restaurar BD
+      </div>
+
+      <div class="card-body">
+        <div class="row" >
+          <div class="col-9">
+
+            <h5>Datos del archivo</h5>
+            <table  class="table">
+              <tr>
+                <th>Nombre: </th>
+                <td colspan="3" *ngIf="!!file"> {{ file.name }} </td>
+              </tr>
+              <tr>
+                <th>Fecha: </th>
+                <td *ngIf="!!file"> {{ fecha }} </td>
+                <th>Hora: </th>
+                <td *ngIf="!!file"> {{ hora }} </td>
+              </tr>
+              
+              <tr>
+                <th>tipo: </th>
+                <td *ngIf="!!file"> {{ file.type }} </td>
+                <th>tamaño: </th>
+                <td *ngIf="!!file"> {{ file.size }} </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-3">
+            <h5>Tablas</h5>
+            <table class="table">
+              <ng-container *ngIf="!!tablas"> 
+                <tr *ngFor="let tabla of tablas">
+                  <td class="p-1"> {{ tabla }} </td>
+                </tr>
+              </ng-container>
+            </table>
+          </div>
+        </div >
+
+        <label class="btn btn-primary btn-block btn-file">
+            <i class="fa fa-folder"> </i> Seleccione el archivo 
+          <input #fileUrl type="file" style="display: none;" accept=".json" (change)="onChange($event)">
+        </label>
+
+        <div class="row">
+          <div class="col-6">
+            <button type="button" class="btn btn-lg btn-primary btn-block" [disabled]="!fileUrl.value"
+              (click)="onUpload()">
+              <i class="fa fa-upload"></i> Restaurar BD
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-lg btn-secondary btn-block" (click)="goBack()">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

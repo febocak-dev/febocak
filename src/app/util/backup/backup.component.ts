@@ -4,7 +4,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CompetenciaI } from '@models/competencia';
 import { CrudService } from '@services/crud.service';
 import { merge } from 'rxjs';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-backup',
@@ -47,14 +46,6 @@ export class BackupComponent implements OnInit {
     let arrObs = [];
 
     nomTablas.forEach( tabla => arrObs.push(this.crudService.getAllRecords$(tabla)) );
-
-    /* console.log(this.competencia);
-    const competencias$ = this.crudService.getAllRecords$('').pipe(
-      map( data => data.filter( elemento => elemento.club === this.competencia.club &&
-                                elemento.competencia === this.competencia.competencia &&
-                                elemento.desde === this.competencia.desde &&
-                                elemento.hasta === this.competencia.hasta))
-    ); */
 
     const result$ = merge(...arrObs);
     result$.subscribe({

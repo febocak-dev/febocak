@@ -1,0 +1,226 @@
+{
+  "categorias": [
+    {
+      "categoria": "Pre infantiles",
+      "desde": 2009,
+      "genero": "Masculino y Femenino",
+      "hasta": 2019,
+      "id": "87QOk3I2gVdPLyhH9fj3"
+    },
+    {
+      "categoria": "Damas Masters A",
+      "desde": 1975,
+      "genero": "Femenino",
+      "hasta": 1984,
+      "id": "CbnFhkibcA2MmHgjTJ6v"
+    },
+    {
+      "categoria": "Caballeros Masters",
+      "desde": 1900,
+      "genero": "Masculino",
+      "hasta": 1959,
+      "id": "GPTMNYwNGig8qMoxeevj"
+    },
+    {
+      "categoria": "Juniors",
+      "desde": 2001,
+      "genero": "Masculino y Femenino",
+      "hasta": 2002,
+      "id": "HKvY7fgXduNWlzjQ39yI"
+    },
+    {
+      "categoria": "Caballeros Masters B",
+      "desde": 1975,
+      "genero": "Masculino",
+      "hasta": 1979,
+      "id": "RVtlXmwkS9OAMxy61Y5C"
+    },
+    {
+      "categoria": "Damas Masters B",
+      "desde": 1965,
+      "genero": "Femenino",
+      "hasta": 1974,
+      "id": "RiUtDErmVTg7LNN1jj6J"
+    },
+    {
+      "categoria": "Caballeros Masters D",
+      "desde": 1965,
+      "genero": "Masculino",
+      "hasta": 1969,
+      "id": "VRmCC6fh53i8Xan6Uv78"
+    },
+    {
+      "categoria": "Caballeros Masters E",
+      "desde": 1960,
+      "genero": "Masculino",
+      "hasta": 1964,
+      "id": "X5TUWSq8lfnRa7rOMV1d"
+    },
+    {
+      "categoria": "Caballeros Masters C",
+      "desde": 1970,
+      "genero": "Masculino",
+      "hasta": 1974,
+      "id": "iWmVxbm64znKQ9JYIr75"
+    },
+    {
+      "categoria": "Menores A",
+      "desde": 2006,
+      "genero": "Masculino y Femenino",
+      "hasta": 2006,
+      "id": "jD63HLIOVnrmABhxJsdP"
+    },
+    {
+      "categoria": "Caballeros Masters A",
+      "desde": 1980,
+      "genero": "Masculino",
+      "hasta": 1984,
+      "id": "mgI9BlqqfotqhXOcD7yL"
+    },
+    {
+      "categoria": "Cadetes",
+      "desde": 2003,
+      "genero": "Masculino y Femenino",
+      "hasta": 2004,
+      "id": "mm2rJSTpniZP8ZiiyiR4"
+    },
+    {
+      "categoria": "Infantiles",
+      "desde": 2007,
+      "genero": "Masculino y Femenino",
+      "hasta": 2008,
+      "id": "nCORRLtTbyNgpanYaWLR"
+    },
+    {
+      "categoria": "Menores B",
+      "desde": 2005,
+      "genero": "Masculino y Femenino",
+      "hasta": 2005,
+      "id": "noPJPCEsxcqeG3GKwz5J"
+    },
+    {
+      "categoria": "Damas Masters C",
+      "desde": 1900,
+      "genero": "Femenino",
+      "hasta": 1964,
+      "id": "tfJctoqyX2jbwBQeTZV1"
+    },
+    {
+      "categoria": "Seniors",
+      "desde": 1985,
+      "genero": "Masculino y Femenino",
+      "hasta": 2000,
+      "id": "xzYn77UcBn1Ray9SxLu2"
+    }
+  ],
+  "clubes": [
+    {
+      "delegado": "Lucas Pisano ",
+      "descripcion": "Laguna del Difunto Manuel",
+      "entrenador": "Lucas Pisano",
+      "id": "lICOLv8l525qHeSfEC5d",
+      "nombre": "Canotaje Las Flores"
+    },
+    {
+      "delegado": "No aplica",
+      "descripcion": "Para asignar a los Administradores del sistema",
+      "entrenador": "No aplica",
+      "nombre": "FeBoCaK",
+      "id": "zqNKMCNRhH6YLIJH4PXo"
+    }
+  ],
+
+  "competencias": [
+    {
+      "club": "Canotaje Las Flores",
+      "competencia": "Campeonato Provincial de Pista 1° fecha",
+      "desde": "2019-08-03",
+      "distancia": [
+        {
+          "categoria": "Pre infantiles",
+          "distancia": "1000",
+          "embarcacion": "K1"
+        },
+        {
+          "categoria": "Pre infantiles",
+          "distancia": "1000 ",
+          "embarcacion": "K2"
+        },
+        {
+          "categoria": "Pre infantiles",
+          "distancia": "1000",
+          "embarcacion": "430"
+        },
+        {
+          "categoria": "Infantiles",
+          "distancia": "1000",
+          "embarcacion": "K1"
+        },
+        {
+          "categoria": "Infantiles",
+          "distancia": "1000",
+          "embarcacion": "K2"
+        },
+        {
+          "categoria": "Infantiles",
+          "distancia": "1000",
+          "embarcacion": "430"
+        },
+        {
+          "categoria": "Menores A",
+          "distancia": "2000",
+          "embarcacion": "K1"
+        },
+        {
+          "categoria": "Menores A",
+          "distancia": "2000",
+          "embarcacion": "K2"
+        },
+        {
+          "categoria": "Menores A",
+          "distancia": "2000",
+          "embarcacion": "430"
+        },
+        {
+          "categoria": "Menores B",
+          "distancia": "2000",
+          "embarcacion": "K1"
+        },
+        {
+          "categoria": "Menores B",
+          "distancia": "2000",
+          "embarcacion": "K2"
+        },
+        {
+          "categoria": "Menores B",
+          "distancia": "2000",
+          "embarcacion": "430"
+        }
+      ],
+      "hasta": "2019-08-04",
+      "id": "lJBIk7KClZmifrIrSysT"
+    }
+  ],
+  "consola": [
+    {
+      "club": "Canotaje Las Flores",
+      "competencia": "Campeonato Provincial de Pista 1° fecha",
+      "desde": "2019-08-03",
+      "hasta": "2019-08-04",
+      "id": "01",
+      "idCompetencia": "  lJBIk7KClZmifrIrSysT ",
+      "status": "Cerrar inscripciones"
+    }
+  ],
+  "users": [
+    {
+      "club": "FeBoCaK",
+      "email": "gaby@mail.com",
+      "name": "Gabriela Pérez",
+      "password": "123456",
+      "password2": "123456",
+      "rol": "Administración",
+      "id": "5O4N9SDozfBdPe1qYCLb"
+    }
+  ]
+}

@@ -67,6 +67,11 @@ export class CrudService {
     return from(collection.add(registro));
   }
 
+  setRecord$<T extends RecordI>(tableName: string, registro: T) {
+    const collection = this.afs.collection(tableName);
+    return from(collection.doc(registro.id).set(registro));
+  }
+
   updateRecord$<T extends RecordI>(tableName: string, id: string, registro: T) {
     return from(this.afs.doc<T>(`${tableName}/${id}`).update(registro)).pipe(
       catchError(this.handleError)
