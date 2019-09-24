@@ -9,6 +9,10 @@
     [usuario]="usuario$ | async" (emitLogout)="onLogout()" >
   </app-navbar-inscripcion>
 
+  <app-navbar-competencia *ngSwitchCase = "'Competencias'"
+    [usuario]="usuario$ | async" (emitLogout)="onLogout()" >
+  </app-navbar-competencia>
+
 </ng-container>
 
 

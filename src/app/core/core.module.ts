@@ -11,6 +11,7 @@ import { MessageComponent } from './message/message.component';
 import { ShellComponent } from './shell/shell.component';
 import { NavbarAdminComponent } from './shell/navbar-admin.component';
 import { NavbarInscripcionComponent } from './shell/navbar-inscripcion.component';
+import { NavbarCompetenciaComponent } from './shell/navbar-competencia.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     NotFoundComponent, ErrorComponent, 
     SpinnerComponent, MessageComponent,
-    ShellComponent, NavbarAdminComponent, NavbarInscripcionComponent,
+    ShellComponent, 
+    NavbarAdminComponent, NavbarInscripcionComponent, NavbarCompetenciaComponent,
     HomeComponent, LoginComponent 
   ],
   imports: [

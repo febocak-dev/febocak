@@ -6,6 +6,7 @@
     "deploy": "ng deploy --base-href=https://febocak.github.io/inscripciones/",
     "deploy-i1": "ng deploy --configuration=inscripcion-1 --base-href=https://soyjulioperez.github.io/febocak01/",
     "deploy-a1": "ng deploy --configuration=administracion-1 --base-href=https://soyjulioperez.github.io/febocak01/",
+    "deploy-c1": "ng deploy --configuration=competencia-1 --base-href=https://soyjulioperez.github.io/febocak01/",
     "start": "ng serve",
     "build": "ng build",
     "build-i": "ng build --configuration=inscripcion --base-href=https://febocak.github.io/inscripciones/",
@@ -13,6 +14,8 @@
     "serve-a2": "ng serve --configuration=administracion-2 --port=4202",
     "serve-i1": "ng serve --configuration=inscripcion-1 --port=4201",
     "serve-i2": "ng serve --configuration=inscripcion-2 --port=4202",
+    "serve-c1": "ng serve --configuration=competencia-1 --port=4201",
+    "serve-c2": "ng serve --configuration=competencia-2 --port=4202",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

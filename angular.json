@@ -118,8 +118,25 @@
                   "with": "src/environments/environment.administracion-2.ts"
                 }
               ]              
+            },
+            "competencia-1": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.competencia-1.ts"
+                }
+              ]              
+            },
+            "competencia-2": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.competencia-2.ts"
+                }
+              ]              
             }
           }
+          
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -141,6 +158,12 @@
             },
             "administracion-2": {
               "browserTarget": "febocak01:build:administracion-2"
+            },
+            "competencia-1": {
+              "browserTarget": "febocak01:build:competencia-1"
+            },
+            "competencia-2": {
+              "browserTarget": "febocak01:build:competencia-2"
             }
           }
         },
