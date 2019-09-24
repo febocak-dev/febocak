@@ -1,0 +1,11 @@
+<p>Palistas</p>
+<ng-container *ngIf="!!palistas">
+  <table class="table">
+    <tr *ngFor="let palista of palistas">
+      <td class="p-1"> {{ palista['D.N.I.'] }} </td>
+      <td class="p-1"> {{ palista.APELLIDO }} </td>
+      <td class="p-1"> {{ palista.NOMBRE }} </td>
+      <td class="p-1"> {{ palista.CATEG }} </td>
+    </tr>
+  </table>
+</ng-container>

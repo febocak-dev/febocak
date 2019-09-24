@@ -1,0 +1,33 @@
+<ng-container *ngIf=" palistas$ | async as tblPalistas">
+  <div id="printJS-table">
+
+    <div class="row my-2">
+      <div class="col-8">
+        <h4>Palistas</h4>
+        <h6>{{ tblPalistas[1] }}</h6>
+      </div>
+      <div class="col-4" *ngIf="showBtnImprimir">
+        <button class="btn btn-outline-primary float-right" (click)="imprimir()">
+          <i class="fa fa-print"></i> Imprimir
+        </button>
+      </div>
+    </div>
+
+    <table class="table">
+      <tr>
+        <th>DNI</th>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>F nacimiento</th>
+      </tr>
+
+      <tr *ngFor="let palista of tblPalistas[0]">
+        <td class="p-1"> {{ palista['D.N.I.'] }} </td>
+        <td class="p-1"> {{ palista.APELLIDO }} </td>
+        <td class="p-1"> {{ palista.NOMBRE }} </td>
+        <td class="p-1"> {{ palista['FECHA NAC.'] }} </td>
+      </tr>
+    </table>
+  </div>
+
+</ng-container>

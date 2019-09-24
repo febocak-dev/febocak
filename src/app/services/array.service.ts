@@ -92,7 +92,5 @@ export class ArrayService {
 
    --- ALGUNAS PRUEBAS ---
 const contarArray = this.arrayService.groupAndCount(todasLasDistancias, ['embarcacion','distancia']);
-    console.log('TCL: InscripcionesFormComponent -> ngOnInit -> contarArray', contarArray)
     const sumarArray = this.arrayService.groupAndSum(todasLasDistancias, ['embarcacion','distancia'], 'distancia');
-    console.log('TCL: InscripcionesFormComponent -> ngOnInit -> sumarArray', sumarArray)
 */

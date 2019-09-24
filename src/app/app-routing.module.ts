@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'palistas', loadChildren: () => import('./tables/palistas/palistas.module').then(m => m.PalistasModule) },
   { path: 'inscripciones', loadChildren: () => import('./procedures/inscripciones/inscripciones.module').then(m => m.InscripcionesModule) },
   { path: 'backup', loadChildren: () => import('./util/backup/backup.module').then(m => m.BackupModule) },
-  { path: 'restore', loadChildren: () => import('./util/restore/restore.module').then(m => m.RestoreModule) }
+  { path: 'restore', loadChildren: () => import('./util/restore/restore.module').then(m => m.RestoreModule) },
+  { path: 'importar-palistas', loadChildren: () => import('./util/importar-palistas/importar-palistas.module').then(m => m.ImportarPalistasModule) }
   // { path: '**', component: NotFoundComponent }
   //{ path: '', redirectTo: '/', pathMatch: 'full' }
 ];

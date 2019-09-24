@@ -1,0 +1,10 @@
+<p>Clubes</p>
+<ng-container *ngIf="!!clubes">
+  <table class="table">
+    <tr *ngFor="let club of clubes">
+      <td routerLink="/importar-palistas/detalle-club/{{club.ENTIDAD}}" class="p-1"> {{ club.ENTIDAD }} </td>
+      <td routerLink="/importar-palistas/detalle-club/{{club.ENTIDAD}}" class="p-1"> {{ club.CIUDAD }} </td>
+      <td routerLink="/importar-palistas/detalle-club/{{club.ENTIDAD}}" class="p-1"> {{ club.cantidad }} </td>
+    </tr>
+  </table>
+</ng-container>
