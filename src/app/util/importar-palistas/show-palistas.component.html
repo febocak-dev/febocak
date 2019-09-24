@@ -3,10 +3,9 @@
 
     <div class="row my-2">
       <div class="col-8">
-        <h4>Palistas</h4>
-        <h6>{{ tblPalistas[1] }}</h6>
+        <h4>Palistas - {{ tblPalistas[1] }}</h4>
       </div>
-      <div class="col-4" *ngIf="showBtnImprimir">
+      <div class="col-4">
         <button class="btn btn-outline-primary float-right" (click)="imprimir()">
           <i class="fa fa-print"></i> Imprimir
         </button>

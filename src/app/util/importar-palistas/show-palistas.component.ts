@@ -34,11 +34,8 @@ export class ShowPalistasComponent implements OnInit {
 
   }
 
-  async imprimir() {
-    this.showBtnImprimir = false;
-    this.ref.detectChanges();
-    await print('printJS-table', 'html');
-    this.showBtnImprimir = true;
+  imprimir() {
+    print('printJS-table', 'html');
     
   }
 

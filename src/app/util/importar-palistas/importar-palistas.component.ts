@@ -54,6 +54,9 @@ export class ImportarPalistasComponent implements OnInit {
       this.checkAll();
       this.checkEmptyClub();
       this.checkEmptyDNI();
+      this.checkEmptyName();
+      this.checkEmptyFecha();
+      this.checkFecha();
       this.checkRepeatedDNI();
     }
     reader.readAsText(this.file);
@@ -91,6 +94,69 @@ export class ImportarPalistasComponent implements OnInit {
       tipo: 'emptyDni'
     }
     this.tblResumen.push(resumen);
+  }
+
+  checkEmptyName() {
+    const palistasEmptyName = this.palistas.filter( el => el.APELLIDO === '' || el.NOMBRE === '');
+
+    this.sharePalistas['emptyName'] = [palistasEmptyName, 'Registros con nombre o apellido en blanco'];
+    const resumen = {
+      descrip: 'Número de registros con Nombre o Apellido en blanco: ' + palistasEmptyName.length,
+      tipo: 'emptyName'
+    }
+    this.tblResumen.push(resumen);
+  }
+
+  checkEmptyFecha() {
+    const palistasEmptyFecha = this.palistas.filter( el => el['FECHA NAC.'] === '');
+
+    this.sharePalistas['emptyFecha'] = [palistasEmptyFecha, 'Registros con fecha en blanco'];
+    const resumen = {
+      descrip: 'Número de registros con fecha en blanco: ' + palistasEmptyFecha.length,
+      tipo: 'emptyFecha'
+    }
+    this.tblResumen.push(resumen);
+  }
+
+  checkFecha() {
+    const palistasValidFecha = this.palistas.filter( 
+      el => el['FECHA NAC.'] !== '' && this.validateFecha(el['FECHA NAC.'])
+    );
+
+    this.sharePalistas['validFecha'] = [palistasValidFecha, 'Registros con fecha invalida'];
+    const resumen = {
+      descrip: 'Número de registros con fecha invalida: ' + palistasValidFecha.length,
+      tipo: 'validFecha'
+    }
+    this.tblResumen.push(resumen);
+  }
+
+  validateFecha(fecha: string): boolean {
+    if (fecha.length > 10) {
+      return true;
+    }
+    if (fecha.length < 10) {
+      fecha = '0' + fecha;
+    }
+
+    let vfecha = fecha.split('/');
+
+    if ( +vfecha[2] < 1900 || +vfecha[2] > 2015) {
+      return true;
+    }
+    if (+vfecha[1] < 1 || +vfecha[1] > 12) {
+      return true;
+    }
+    if (+vfecha[0] < 1 || +vfecha[0] > 31) {
+      return true;
+    }
+    if ([4, 6, 9, 11].includes(+vfecha[1]) && +vfecha[0] > 30) {
+      return true;
+    }
+    if (+vfecha[1] === 2 && +vfecha[0] > 29) {
+      return true;
+    }
+    return false; 
   }
 
   checkRepeatedDNI() {
