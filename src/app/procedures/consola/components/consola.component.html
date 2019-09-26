@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">
+
+    <div class="card mt-3">
+      <div class="card-header text-center">
+        <div *ngIf="!!registro" class="">
+          {{ desStatus }} [ {{ nivelStatus }} ]<br>
+          {{ registro.competencia }} <br>
+          {{ registro.club}}
+        </div>
+      </div>
+      
+      <div class="card-body">
+
+        <div class="row mt-3">
+          <div class="col-10">
+            <button class="btn btn-block btn-lg" 
+              data-toggle="modal" data-target="#modalCompetencia" [disabled]="nivelStatus > 0"
+              [ngClass]="nivelStatus >= 1 ? 'btn-primary' : 'btn-outline-primary'">
+              Establecer próxima competencia
+            </button>
+          </div>
+          <div class="col-2">
+            <span class="text-primary">
+              <i class="fa fa-3x" [ngClass]="nivelStatus >= 1 ? 'fa-check-square-o': 'fa-square-o'"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-10">
+            <button class="btn btn-block btn-lg" (click)="abrirInscirpciones()"
+              [disabled]="nivelStatus === 2 || nivelStatus > 3"
+              [ngClass]="nivelStatus >= 2 ? 'btn-primary' : 'btn-outline-primary'">
+              Abrir inscripciones
+            </button>
+          </div>
+          <div class="col-2">
+            <span class="text-primary">
+              <i class="fa fa-3x" [ngClass]="nivelStatus >= 2 ? 'fa-check-square-o': 'fa-square-o'"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-10">
+            <button class="btn btn-block btn-lg" (click)="cerrarInscirpciones()"
+            [ngClass]="nivelStatus >= 3 ? 'btn-primary' : 'btn-outline-primary'">
+              Cerrar inscripciones
+            </button>
+          </div>
+          <div class="col-2">
+            <span class="text-primary">
+              <i class="fa fa-3x" [ngClass]="nivelStatus >= 3 ? 'fa-check-square-o': 'fa-square-o'"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-10">
+            <button class="btn btn-block btn-lg" 
+            data-toggle="modal" data-target="#modalDownload"
+            [ngClass]="nivelStatus >= 4 ? 'btn-primary' : 'btn-outline-primary'">
+              Exportar datos de las inscripciones
+            </button>
+          </div>
+          <div class="col-2">
+            <span class="text-primary">
+              <i class="fa fa-3x" [ngClass]="nivelStatus >= 4 ? 'fa-check-square-o': 'fa-square-o'"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-10">
+            <button class="btn btn-block btn-lg" (click)="abrirCompetencia()"
+              [ngClass]="nivelStatus >= 5 ? 'btn-primary' : 'btn-outline-primary'">
+              Abrir competencia
+            </button>
+          </div>
+          <div class="col-2">
+            <span class="text-primary">
+              <i class="fa fa-3x" [ngClass]="nivelStatus >= 5 ? 'fa-check-square-o': 'fa-square-o'"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-10">
+            <button class="btn btn-block btn-lg" (click)="importarDatos()"
+              [ngClass]="nivelStatus >= 6 ? 'btn-primary' : 'btn-outline-primary'">
+              Importar datos de la competencia
+            </button>
+          </div>
+          <div class="col-2">
+            <span class="text-primary">
+              <i class="fa fa-3x" [ngClass]="nivelStatus >= 6 ? 'fa-check-square-o': 'fa-square-o'"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-10">
+            <button class="btn btn-block btn-lg" (click)="cerrarCompetencia()"
+              [ngClass]="nivelStatus >= 7 ? 'btn-primary' : 'btn-outline-primary'">
+              Cerrar competencia
+            </button>
+          </div>
+          <div class="col-2">
+            <span class="text-primary">
+              <i class="fa fa-3x" [ngClass]="nivelStatus >= 7 ? 'fa-check-square-o': 'fa-square-o'"></i>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<app-modal-competencia
+  [tabla]="tblCompetencias"
+  (emitSeleccionar)="seleccionarCompetencia($event)"
+></app-modal-competencia>
+
+<app-modal-download
+  [competencia] = 'registro'
+  (emitExportar)="exportarDatos()"
+></app-modal-download>
+
