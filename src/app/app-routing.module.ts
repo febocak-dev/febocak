@@ -25,7 +25,9 @@ const routes: Routes = [
   { path: 'consola', loadChildren: () => import('./procedures/consola/consola.module').then(m => m.ConsolaModule) },
   { path: 'backup', loadChildren: () => import('./util/backup/backup.module').then(m => m.BackupModule) },
   { path: 'restore', loadChildren: () => import('./util/restore/restore.module').then(m => m.RestoreModule) },
-  { path: 'importar-palistas', loadChildren: () => import('./util/importar-palistas/importar-palistas.module').then(m => m.ImportarPalistasModule) }
+  { path: 'importar-palistas', loadChildren: () => import('./util/importar-palistas/importar-palistas.module').then(m => m.ImportarPalistasModule) },
+  { path: 'inicializar-competencia', loadChildren: () => import('./competencias/inicializar-competencia/inicializar-competencia.module').then(m => m.InicializarCompetenciaModule)},
+  { path: 'importar-inscripciones', loadChildren: () => import('./competencias/importar-inscripciones/importar-inscripciones.module').then(m => m.ImportarInscripcionesModule)},
   // { path: '**', component: NotFoundComponent }
   //{ path: '', redirectTo: '/', pathMatch: 'full' }
 ];
