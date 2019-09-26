@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
 
-import { from, combineLatest, BehaviorSubject, Observable } from "rxjs";
+import { from, combineLatest, BehaviorSubject, Observable, of } from "rxjs";
 import { map, tap } from "rxjs/operators";
 
 import { CrudService } from '@services/crud.service';
@@ -45,6 +45,16 @@ export class AuthService {
   logoutUser() {
     this.setAndSendUsuario(null);
     return this.afAuth.auth.signOut();
+  }
+
+  loginLocal$(email: string, password:string) {
+    let usuario = null;
+    const usuarios = JSON.parse(localStorage.getItem('users'));
+    if (!!usuarios) {
+      usuario = usuarios.find(elemento => elemento.email === email && elemento.password === password);
+    }
+    this.setAndSendUsuario(usuario);
+    return of(usuario);
   }
 
   setAndSendUsuario(usuario: UserI) {

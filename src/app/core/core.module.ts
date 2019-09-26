@@ -15,6 +15,7 @@ import { NavbarCompetenciaComponent } from './shell/navbar-competencia.component
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
+import { RedireccionarLoginComponent } from './login/redireccionar-login.component';
 
 
 
@@ -24,7 +25,7 @@ import { RouterModule } from '@angular/router';
     SpinnerComponent, MessageComponent,
     ShellComponent, 
     NavbarAdminComponent, NavbarInscripcionComponent, NavbarCompetenciaComponent,
-    HomeComponent, LoginComponent 
+    HomeComponent, LoginComponent, RedireccionarLoginComponent
   ],
   imports: [
     CommonModule, RouterModule,
