@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'inicializar-competencia', loadChildren: () => import('./competencias/inicializar-competencia/inicializar-competencia.module').then(m => m.InicializarCompetenciaModule)},
   { path: 'importar-inscripciones', loadChildren: () => import('./competencias/importar-inscripciones/importar-inscripciones.module').then(m => m.ImportarInscripcionesModule)},
   { path: 'generar-series', loadChildren: () => import('./competencias/generar-series/generar-series.module').then(m => m.GenerarSeriesModule)},
+  { path: 'editar-serie', loadChildren: () => import('./competencias/editar-serie/editar-serie.module').then(m => m.EditarSerieModule)},
   // { path: '**', component: NotFoundComponent }
   //{ path: '', redirectTo: '/', pathMatch: 'full' }
 ];

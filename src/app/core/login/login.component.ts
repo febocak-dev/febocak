@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-   /*  this.route.queryParams
-      .subscribe(params => this.retornar = params['retornar'] || '/home'); */
+   this.route.queryParams
+      .subscribe(params => this.retornar = params['retornar'] || '/home');
   }
    
   onLogin() {
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginLocal$(this.email, this.password).subscribe(
       () => {
         console.log('final')
-        //this.router.navigate([this.retornar])
+        this.router.navigate([this.retornar])
       },
       error => this.msg.error('Error: Ocurrió un error, verifique el email y la contraseña')
     );

@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { InscripcionI } from 'src/app/models/inscripcion';
 import { MessageService } from '@core/message/message.service';
 import { CrudService } from '@services/crud.service';
-import { SeriesService } from './series.service';
+import { SeriesService } from '../services/series.service';
 
 @Component({
   selector: 'app-generar-series',
