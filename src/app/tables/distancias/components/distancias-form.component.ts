@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MessageService } from '@core/message/message.service';
 import { CrudService } from '@services/crud.service';
+import { ArrayService } from '@services/array.service';
 
 import { CompetenciaI } from '@models/competencia';
 import { CategoriaI } from '@models/categoria';
@@ -27,7 +28,8 @@ export class DistanciasFormComponent implements OnInit {
     private msg: MessageService,
     private location: Location, 
     private actRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private arrayService: ArrayService) {
   }
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class DistanciasFormComponent implements OnInit {
       ...this.actRoute.snapshot.data['distanciaData'][0]
     };
     this.tblCategoria = this.actRoute.snapshot.data['distanciaData'][1];
+    this.tblCategoria = this.arrayService.sort(this.tblCategoria, ['desde'])
     
     const action = this.actRoute.snapshot.paramMap.get('action');
     this.templateData.titulo = this.getTitle(action);

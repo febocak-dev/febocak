@@ -7,9 +7,16 @@ export class ArrayService {
 
   constructor() { }
 
-  groupAndFlat(source: any[], parFields: string[]) {
+  sort(source: any[], parFields: string[], type = 'up') {
     const copySource = [...source];
-    copySource.sort( (a, b) => this.mayMinOrEqual(a,b, parFields));
+    copySource.sort( (a, b) => this.biggerSmallerOrSame(a,b, parFields, type));
+    return copySource;
+  }
+
+  groupAndFlat(source: any[], parFields: string[]) {
+    // const copySource = [...source];
+    // copySource.sort( (a, b) => this.biggerSmallerOrSame(a,b, parFields));
+    const copySource = this.sort(source, parFields, 'down');
     
     let newArray = [];
     let group = this.concatFields(copySource[0], parFields);
@@ -28,7 +35,7 @@ export class ArrayService {
 
   groupAndCount(source: any[], parFields: string[]) {
     const copySource = [...source];
-    copySource.sort( (a, b) => this.mayMinOrEqual(a,b, parFields));
+    copySource.sort( (a, b) => this.biggerSmallerOrSame(a,b, parFields));
     
     let newArray = [];
 
@@ -49,7 +56,7 @@ export class ArrayService {
 
   groupAndSum(source: any[], parFields: string[], fieldSum: number | string) {
     const copySource = [...source];
-    copySource.sort( (a, b) => this.mayMinOrEqual(a,b, parFields));
+    copySource.sort( (a, b) => this.biggerSmallerOrSame(a,b, parFields));
     
     let newArray = [];
 
@@ -69,21 +76,42 @@ export class ArrayService {
   }
 
   concatFields(obj: any, fields: string[]) {
-    return fields.reduce( (acc, el) => acc + obj[el].trim(), '');
+    if (fields[0]=== "categoria" && fields[1]=== "embarcacion" && fields[2]===  "distancia") {
+      console.log('TCL: ArrayService -> concatFields -> fields', fields)
+      console.log('TCL: ArrayService -> concatFields -> obj', obj)
+
+      const retorno = fields.reduce( (acc, el) => acc + this.toString(obj[el]).trim(), '')
+      console.log('TCL: ArrayService -> concatFields -> retorno', retorno)
+      
+    }
+    
+    return fields.reduce( (acc, el) => acc + this.toString(obj[el]).trim(), '');
   }
 
-  mayMinOrEqual(parA: any, parB: any, fields: string[]) {
+  toString( parVariable: string | number | boolean) {
+    if (typeof parVariable === 'number') {
+      return parVariable.toString();
+    }
+    if (typeof parVariable === 'boolean') {
+      return parVariable ? '1' : '0';
+    }
+    if (typeof parVariable === 'string') {
+      return parVariable;
+    }
+
+  }
+
+  biggerSmallerOrSame(parA: any, parB: any, fields: string[], type = 'up') {
     const A = this.concatFields(parA, fields);
     const B = this.concatFields(parB, fields);
 
     if (A > B ) {
-      return 1;
+      return type === 'up' ?  -1 : 1;
     }
     if (B > A ) {
-      return -1;
+      return type === 'up' ?  1 : -1;
     };
     return 0
-
   }
 
 }

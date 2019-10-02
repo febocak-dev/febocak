@@ -3,8 +3,9 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CategoriaI } from 'src/app/models/categoria';
 import { DistanciaI, CompetenciaI } from 'src/app/models/competencia';
 import { CrudService } from '@services/crud.service';
+import { ArrayService } from '@services/array.service';
 
-@Component({
+@Component ({
   selector: 'app-filtro-serie',
   templateUrl: './filtro-serie.component.html',
   styles: []
@@ -20,17 +21,22 @@ export class FiltroSerieComponent implements OnInit {
   miForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-    private crudService: CrudService) {
+    private crudService: CrudService,
+    private arrayService: ArrayService) {
 
 }
 
   ngOnInit() {
-    this.crudService.getAllRecords$('categorias').subscribe( data => this.tblCategorias = data );
+    this.crudService.getAllRecords$('categorias').subscribe( 
+      data => this.tblCategorias = this.arrayService.sort(data, ['desde'])
+    );
     this.crudService.getAllRecords$<CompetenciaI>('competencias').subscribe( data => {
       // TODO tomar distancias de la tabla consola.
       // Esto implica guardar las distancias en la tabla consola al exportar los datos
       // Esto implica no exportar las tablas competencias y distancias 
-      this.tblDistancias = data[2].distancia;
+      this.tblDistancias = this.arrayService.groupAndFlat(data[2].distancia, ['embarcacion','distancia']);
+      console.log('TCL: FiltroSerieComponent -> ngOnInit -> this.tblDistancias', this.tblDistancias)
+      
     });
 
     this.buildForm();
