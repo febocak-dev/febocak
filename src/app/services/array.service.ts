@@ -14,8 +14,6 @@ export class ArrayService {
   }
 
   groupAndFlat(source: any[], parFields: string[]) {
-    // const copySource = [...source];
-    // copySource.sort( (a, b) => this.biggerSmallerOrSame(a,b, parFields));
     const copySource = this.sort(source, parFields, 'down');
     
     let newArray = [];
@@ -76,16 +74,8 @@ export class ArrayService {
   }
 
   concatFields(obj: any, fields: string[]) {
-    if (fields[0]=== "categoria" && fields[1]=== "embarcacion" && fields[2]===  "distancia") {
-      console.log('TCL: ArrayService -> concatFields -> fields', fields)
-      console.log('TCL: ArrayService -> concatFields -> obj', obj)
-
-      const retorno = fields.reduce( (acc, el) => acc + this.toString(obj[el]).trim(), '')
-      console.log('TCL: ArrayService -> concatFields -> retorno', retorno)
-      
-    }
-    
-    return fields.reduce( (acc, el) => acc + this.toString(obj[el]).trim(), '');
+    let retorno = fields.reduce( (acc, el) => acc + this.toString(obj[el]).trim(), '');
+    return retorno;
   }
 
   toString( parVariable: string | number | boolean) {
@@ -114,7 +104,26 @@ export class ArrayService {
     return 0
   }
 
+  find(source: any[], objSearch: any) {
+    const fields = Object.keys(objSearch);
+
+    let searchCondition = this.concatFields(objSearch, fields);
+    return source.find( value => this.concatFields(value, fields) === searchCondition)
+  }
+
+  filter(source: any[], objSearch: any) {
+    console.log('TCL: ArrayService -> filter -> objSearch', objSearch)
+    console.log('TCL: ArrayService -> filter -> source', source)
+    const fields = Object.keys(objSearch);
+    console.log('TCL: ArrayService -> filter -> fields', fields)
+
+    let searchCondition = this.concatFields(objSearch, fields);
+    return source.filter( value => this.concatFields(value, fields) === searchCondition)
+  }
+
 }
+
+
 
 /*
 

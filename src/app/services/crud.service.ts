@@ -48,9 +48,6 @@ export class CrudService {
   }
 
   getRecord$<T extends RecordI>(tableName: string, id: string): Observable<T> {
-    if (tableName === 'competencias') {
-      console.log('get record competencia Id', id);
-    }
     return this.afs.doc<T>(`${tableName}/${id}`).valueChanges().pipe(first());
   }
 

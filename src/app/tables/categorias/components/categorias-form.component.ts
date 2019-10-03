@@ -7,6 +7,7 @@ import { MessageService } from '@core/message/message.service';
 import { CrudService } from '@services/crud.service';
 
 import { CategoriaI } from '@models/categoria';
+import { ArrayService } from '@services/array.service';
 
 @Component({
   selector: 'app-categorias-form',
@@ -23,7 +24,8 @@ export class CategoriasFormComponent implements OnInit {
     private msg: MessageService,
     private location: Location, 
     private actRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private arrayService: ArrayService) {
   }
 
   ngOnInit() {
@@ -51,7 +53,7 @@ export class CategoriasFormComponent implements OnInit {
   }
 
   setFormData() {
-    const record = this.actRoute.snapshot.data['categoriaData'];
+    const record = this.actRoute.snapshot.data['categoriaData'][0];
     this.miForm.patchValue(record);
     if (this.templateData.titulo==='Eliminar') {
       this.miForm.controls.genero.disable();
@@ -71,21 +73,26 @@ export class CategoriasFormComponent implements OnInit {
     return this.miForm.get('categoria');
   }
 
-  onSubmit(submitBtn: HTMLButtonElement) {
+  async onSubmit(submitBtn: HTMLButtonElement) {
     submitBtn.disabled = true;
-    
     const record = { id: this.templateData.id,...this.miForm.value }
-    switch (this.templateData.titulo) {
-      case 'Agregar':
-        this.aceptarAgregar(record);
-        break;
-      case 'Modificar':
-        this.aceptarEditar(record);
-        break;
-      case 'Eliminar':
-        this.aceptarEliminar(record);
-        break;
+
+    if (this.validations(record)) {
+      switch (this.templateData.titulo) {
+        case 'Agregar':
+          this.aceptarAgregar(record);
+          break;
+        case 'Modificar':
+          this.aceptarEditar(record);
+          break;
+        case 'Eliminar':
+          this.aceptarEliminar(record);
+          break;
+      }
+    } else { 
+      submitBtn.disabled = false;
     }
+
   }
   
   aceptarAgregar(record: CategoriaI) {
@@ -124,6 +131,32 @@ export class CategoriasFormComponent implements OnInit {
   getClassHeader(action: string) {
     const objStyle = {add:'bg-primary', edit: 'bg-warning', delete: 'bg-danger'};
     return objStyle[action];
+  }
+
+  validations(record) {
+    const tabla = this.actRoute.snapshot.data['categoriaData'][1];
+    const errorMessages = [];
+    errorMessages.push('Ya hay otro registro con los mismos valores para los campos desde, hasta y genero');
+    errorMessages.push('Ya hay otro registro con la mismas descripción para la categoría');
+    const objSearch = [];
+    objSearch.push({ desde: record.desde, hasta: record.hasta, genero: record.genero });
+    objSearch.push({ categoria: record.categoria });
+
+    for (let i = 0; i < objSearch.length; i++) {
+      const encontro = this.arrayService.find(tabla, objSearch[i]);
+      if (!!encontro) {
+        if (this.templateData.titulo === 'Agregar') {
+          this.msg.warning(errorMessages[i]);
+          return false;
+        } else {
+          if(record.id !== encontro.id) {
+            this.msg.warning(errorMessages[i]);
+            return false;
+          }
+        }
+      }
+    }
+    return true;
   }
 
 }
