@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { MessageService } from '@core/message/message.service';
 import { CrudService } from '@services/crud.service';
 import { AuthService } from '@services/auth.service';
+import { ArrayService } from '@services/array.service';
 
 import { compareValidator } from '../../../shared/compare-validator.directive';
 
@@ -30,7 +31,8 @@ export class UsuariosFormComponent implements OnInit {
     private msg: MessageService,
     private location: Location, 
     private actRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private arrayService: ArrayService) {
   }
 
   ngOnInit() {
@@ -96,8 +98,13 @@ export class UsuariosFormComponent implements OnInit {
 
   onSubmit(submitBtn: HTMLButtonElement) {
     submitBtn.disabled = true;
-    
     const record = { id: this.templateData.id,...this.miForm.value }
+
+    if (!this.validations(record)) {
+      submitBtn.disabled = false;
+      return;
+    }
+
     switch (this.templateData.titulo) {
       case 'Agregar':
         this.aceptarAgregar(record);
@@ -152,6 +159,33 @@ export class UsuariosFormComponent implements OnInit {
   getClassHeader(action: string) {
     const objStyle = {add:'bg-primary', edit: 'bg-warning', delete: 'bg-danger'};
     return objStyle[action];
+  }
+
+  validations(record) {
+    console.log('TCL: UsuariosFormComponent -> validations -> record', record)
+    const tabla = this.actRoute.snapshot.data['usuarioData'][2];
+    const errorMessages = [];
+    errorMessages.push('Ya hay otro registro con este email');
+    errorMessages.push('Ya hay otro registro con este nombre');
+    const objSearch = [];
+    objSearch.push({ email: record.email });
+    objSearch.push({ name: record.name });
+
+    for (let i = 0; i < objSearch.length; i++) {
+      const encontro = this.arrayService.find(tabla, objSearch[i]);
+      if (!!encontro) {
+        if (this.templateData.titulo === 'Agregar') {
+          this.msg.warning(errorMessages[i]);
+          return false;
+        } else {
+          if(record.id !== encontro.id) {
+            this.msg.warning(errorMessages[i]);
+            return false;
+          }
+        }
+      }
+    }
+    return true;
   }
 
 }

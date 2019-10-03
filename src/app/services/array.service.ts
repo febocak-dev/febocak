@@ -74,6 +74,9 @@ export class ArrayService {
   }
 
   concatFields(obj: any, fields: string[]) {
+  console.log('TCL: ArrayService -> concatFields -> obj', obj)
+  console.log('TCL: ArrayService -> concatFields -> fields', fields)
+    
     let retorno = fields.reduce( (acc, el) => acc + this.toString(obj[el]).trim(), '');
     return retorno;
   }

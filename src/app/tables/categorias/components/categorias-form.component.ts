@@ -77,22 +77,23 @@ export class CategoriasFormComponent implements OnInit {
     submitBtn.disabled = true;
     const record = { id: this.templateData.id,...this.miForm.value }
 
-    if (this.validations(record)) {
-      switch (this.templateData.titulo) {
-        case 'Agregar':
-          this.aceptarAgregar(record);
-          break;
-        case 'Modificar':
-          this.aceptarEditar(record);
-          break;
-        case 'Eliminar':
-          this.aceptarEliminar(record);
-          break;
-      }
-    } else { 
+    if (!this.validations(record)) {
       submitBtn.disabled = false;
+      return;
     }
-
+    
+    switch (this.templateData.titulo) {
+      case 'Agregar':
+        this.aceptarAgregar(record);
+        break;
+      case 'Modificar':
+        this.aceptarEditar(record);
+        break;
+      case 'Eliminar':
+        this.aceptarEliminar(record);
+        break;
+    }
+ 
   }
   
   aceptarAgregar(record: CategoriaI) {
