@@ -115,10 +115,7 @@ export class ArrayService {
   }
 
   filter(source: any[], objSearch: any) {
-    console.log('TCL: ArrayService -> filter -> objSearch', objSearch)
-    console.log('TCL: ArrayService -> filter -> source', source)
     const fields = Object.keys(objSearch);
-    console.log('TCL: ArrayService -> filter -> fields', fields)
 
     let searchCondition = this.concatFields(objSearch, fields);
     return source.filter( value => this.concatFields(value, fields) === searchCondition)

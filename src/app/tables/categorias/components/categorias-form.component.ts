@@ -5,9 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MessageService } from '@core/message/message.service';
 import { CrudService } from '@services/crud.service';
+import { ArrayService } from '@services/array.service';
 
 import { CategoriaI } from '@models/categoria';
-import { ArrayService } from '@services/array.service';
 
 @Component({
   selector: 'app-categorias-form',
@@ -73,7 +73,7 @@ export class CategoriasFormComponent implements OnInit {
     return this.miForm.get('categoria');
   }
 
-  async onSubmit(submitBtn: HTMLButtonElement) {
+  onSubmit(submitBtn: HTMLButtonElement) {
     submitBtn.disabled = true;
     const record = { id: this.templateData.id,...this.miForm.value }
 
