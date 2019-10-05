@@ -21,8 +21,8 @@
 
   <tbody>
     <tr *ngFor="let registro of tabla">
-      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.desde }} </td>
-      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.hasta }} </td>
+      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.desde | date :'dd-MMM-yyyy' }} </td>
+      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.hasta | date :'dd-MMM-yyyy' }} </td>
       <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.competencia }} </td>
       <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.club }} </td>
       <td class="text-center">

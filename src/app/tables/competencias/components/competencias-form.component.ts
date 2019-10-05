@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MessageService } from '@core/message/message.service';
 import { CrudService } from '@services/crud.service';
+import { ArrayService } from '@services/array.service';
 
 import { ClubI } from '@models/club';
 import { CompetenciaI } from '@models/competencia';
@@ -25,7 +26,8 @@ export class CompetenciasFormComponent implements OnInit {
     private msg: MessageService,
     private location: Location, 
     private actRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private arrayService: ArrayService) {
   }
 
   ngOnInit() {
@@ -75,8 +77,13 @@ export class CompetenciasFormComponent implements OnInit {
 
   onSubmit(submitBtn: HTMLButtonElement) {
     submitBtn.disabled = true;
-    
     const record = { id: this.templateData.id,...this.miForm.value }
+
+    if (!this.validations(record)) {
+      submitBtn.disabled = false;
+      return;
+    }
+
     switch (this.templateData.titulo) {
       case 'Agregar':
         this.aceptarAgregar(record);
@@ -128,5 +135,32 @@ export class CompetenciasFormComponent implements OnInit {
     return objStyle[action];
   }
 
+  validations(record) {
+    const tabla = this.actRoute.snapshot.data['competenciaData'][2];
+    const errorMessages = [];
+    errorMessages.push('Ya hay otro registro con el mismo valor para el campo desde');
+    errorMessages.push('Ya hay otro registro con el mismo valor para el campo hasta');
+    errorMessages.push('Ya hay otro registro con el mismo valor para el campo descripción');
+    const objSearch = [];
+    objSearch.push({ desde: record.desde });
+    objSearch.push({ hasta: record.hasta });
+    objSearch.push({ competencia: record.competencia });
+
+    for (let i = 0; i < objSearch.length; i++) {
+      const encontro = this.arrayService.find(tabla, objSearch[i]);
+      if (!!encontro) {
+        if (this.templateData.titulo === 'Agregar') {
+          this.msg.warning(errorMessages[i]);
+          return false;
+        } else {
+          if(record.id !== encontro.id) {
+            this.msg.warning(errorMessages[i]);
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
 
 }

@@ -74,8 +74,6 @@ export class ArrayService {
   }
 
   concatFields(obj: any, fields: string[]) {
-  console.log('TCL: ArrayService -> concatFields -> obj', obj)
-  console.log('TCL: ArrayService -> concatFields -> fields', fields)
     
     let retorno = fields.reduce( (acc, el) => acc + this.toString(obj[el]).trim(), '');
     return retorno;
@@ -114,6 +112,13 @@ export class ArrayService {
     return source.find( value => this.concatFields(value, fields) === searchCondition)
   }
 
+  findIndex(source: any[], objSearch: any) {
+    const fields = Object.keys(objSearch);
+
+    let searchCondition = this.concatFields(objSearch, fields);
+    return source.findIndex( value => this.concatFields(value, fields) === searchCondition)
+  }
+
   filter(source: any[], objSearch: any) {
     const fields = Object.keys(objSearch);
 
@@ -122,12 +127,3 @@ export class ArrayService {
   }
 
 }
-
-
-
-/*
-
-   --- ALGUNAS PRUEBAS ---
-const contarArray = this.arrayService.groupAndCount(todasLasDistancias, ['embarcacion','distancia']);
-    const sumarArray = this.arrayService.groupAndSum(todasLasDistancias, ['embarcacion','distancia'], 'distancia');
-*/

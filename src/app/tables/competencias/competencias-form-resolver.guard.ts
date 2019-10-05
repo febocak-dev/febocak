@@ -9,16 +9,17 @@ import { ClubI } from '@models/club';
 @Injectable({
   providedIn: 'root'
 })
-export class CompetenciasFormResolver implements Resolve<[CompetenciaI, ClubI[]]> {
+export class CompetenciasFormResolver implements Resolve<[CompetenciaI, ClubI[], CompetenciaI[]]> {
 
   constructor(private crudService: CrudService) { }
 
   resolve(route: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot): Observable<[CompetenciaI, ClubI[]]> {
+          state: RouterStateSnapshot): Observable<[CompetenciaI, ClubI[], CompetenciaI[]]> {
     const id = route.paramMap.get('id');
     const allData$ = forkJoin(
       this.crudService.getRecord$('competencias',id),
-      this.crudService.getAllRecords$('clubes','nombre')
+      this.crudService.getAllRecords$('clubes','nombre'),
+      this.crudService.getAllRecords$('competencias')
     );
     
     return allData$;

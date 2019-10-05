@@ -80,7 +80,13 @@ export class DistanciasFormComponent implements OnInit {
 
   onSubmit(submitBtn: HTMLButtonElement) {
     submitBtn.disabled = true;
-    
+    const record = { id: this.templateData.id, ...this.miForm.value }
+
+    if (this.templateData.titulo !== 'Eliminar' && !this.validations(record)) {
+      submitBtn.disabled = false;
+      return;
+    }
+
     this.prepararArreglo(this.templateData.titulo);
     this.guardar();
   }
@@ -122,6 +128,31 @@ export class DistanciasFormComponent implements OnInit {
   getClassHeader(action: string) {
     const objStyle = {add:'bg-primary', edit: 'bg-warning', delete: 'bg-danger'};
     return objStyle[action];
+  }
+
+  validations(record) {
+    const tabla = this.competencia.distancia;
+    const errorMessages = [];
+    errorMessages.push('Ya hay otro registro con los mismos valores para los campos categoria, embarcación y distancia');
+    const objSearch = [];
+    objSearch.push({ categoria: record.categoria, embarcacion: record.embarcacion, distancia: record.distancia });
+
+    for (let i = 0; i < objSearch.length; i++) {
+      const index = this.arrayService.findIndex(tabla, objSearch[i]);
+
+      if (index >= 0) {
+        if (this.templateData.titulo === 'Agregar') {
+          this.msg.warning(errorMessages[i]);
+          return false;
+        } else {
+          if(+record.id !== index) {
+            this.msg.warning(errorMessages[i]);
+            return false;
+          }
+        }
+      }
+    }
+    return true;
   }
 
 }

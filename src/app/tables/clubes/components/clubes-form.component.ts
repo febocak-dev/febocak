@@ -133,7 +133,7 @@ export class ClubesFormComponent implements OnInit {
   validations(record) {
     const tabla = this.actRoute.snapshot.data['clubData'][1];
     const errorMessages = [];
-    errorMessages.push('Ya hay otro registro con el mismo valor para el campos nombre');
+    errorMessages.push('Ya hay otro registro con el mismo valor para el campo nombre');
     const objSearch = [];
     objSearch.push({ nombre: record.nombre });
 
