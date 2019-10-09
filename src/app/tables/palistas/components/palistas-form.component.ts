@@ -9,6 +9,8 @@ import { CrudService } from '@services/crud.service';
 import { ClubI } from '@models/club';
 import { PalistaI } from '@models/palista';
 import { CategoriaI } from '@models/categoria';
+import { ArrayService } from '@services/array.service';
+import { UserI } from '@models/user';
 
 @Component({
   selector: 'app-palistas-form',
@@ -27,12 +29,14 @@ export class PalistasFormComponent implements OnInit {
     private msg: MessageService,
     private location: Location, 
     private actRoute: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private arrayService: ArrayService) {
   }
 
   ngOnInit() {
     this.msg.clearMessages();
-    this.tblClubes = this.actRoute.snapshot.data['palistaData'][1];
+    const usuario: UserI = this.actRoute.snapshot.data['palistaData'][4];
+    this.tblClubes = [ { nombre: usuario.club } ];
     this.tblCategorias = this.actRoute.snapshot.data['palistaData'][2];
 
     const action = this.actRoute.snapshot.paramMap.get('action');
@@ -56,7 +60,7 @@ export class PalistasFormComponent implements OnInit {
       categoria: ['', [Validators.required] ],
       club: ['', [Validators.required, Validators.minLength(3)]]
     });
-    //this.miForm.controls.club.setValue(this.usuario.club);
+    this.miForm.controls.club.setValue(this.tblClubes[0].nombre);
   }
 
   setFormData() {
@@ -91,8 +95,16 @@ export class PalistasFormComponent implements OnInit {
 
   onSubmit(submitBtn: HTMLButtonElement) {
     submitBtn.disabled = true;
-    
-    const record = { id: this.templateData.id,...this.miForm.value }
+    const record = { 
+      id: this.templateData.id,
+     palista: this.miForm.controls.nombre.value.trim() + ' ' + this.miForm.controls.apellido.value,
+      ...this.miForm.value };
+
+    if (!this.validations(record)) {
+      submitBtn.disabled = false;
+      return;
+    }
+
     switch (this.templateData.titulo) {
       case 'Agregar':
         this.aceptarAgregar(record);
@@ -153,5 +165,31 @@ export class PalistasFormComponent implements OnInit {
       const categoria = this.tblCategorias.find( el => año >= el.desde && año <= el.hasta && el.genero.includes(genero)).categoria
       this.miForm.controls.categoria.setValue(categoria);
     }
+  }
+
+  validations(record) {
+    const tabla = this.actRoute.snapshot.data['palistaData'][3];
+    const errorMessages = [];
+    errorMessages.push('Ya hay otro registro con los mismos valores para los campos nombre y apellido');
+    errorMessages.push('Ya hay otro registro con el mismo DNI');
+    const objSearch = [];
+    objSearch.push({ nombre: record.nombre, apellido: record.apellido });
+    objSearch.push({ dni: record.dni });
+
+    for (let i = 0; i < objSearch.length; i++) {
+      const encontro = this.arrayService.find(tabla, objSearch[i]);
+      if (!!encontro) {
+        if (this.templateData.titulo === 'Agregar') {
+          this.msg.warning(errorMessages[i]);
+          return false;
+        } else {
+          if(record.id !== encontro.id) {
+            this.msg.warning(errorMessages[i]);
+            return false;
+          }
+        }
+      }
+    }
+    return true;
   }
 }
