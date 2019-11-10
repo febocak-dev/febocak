@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TiposDeCompetenciasComponent } from './components/tipos-de-competencias.component';
+import { TiposDeCompetenciasFormComponent } from './components/tipos-de-competencias-form.component';
 import { TiposDeCompeteciasResolver } from './tipos-de-competencias-resolver.guard';
+import { TiposDeCompetenciasFormResolver } from './tipos-de-competencias-form-resolver.guard';
 
 
 const routes: Routes = [
@@ -10,7 +12,7 @@ const routes: Routes = [
     resolve: { tipoDeCompetenciaData: TiposDeCompeteciasResolver }, 
     component: TiposDeCompetenciasComponent
   },
-  /* { 
+  { 
     path: ':action', 
     resolve: { tipoDeCompetenciaData: TiposDeCompetenciasFormResolver }, 
     component: TiposDeCompetenciasFormComponent
@@ -19,7 +21,7 @@ const routes: Routes = [
     path: ':action/:id', 
     resolve: { tipoDeCompetenciaData: TiposDeCompetenciasFormResolver }, 
     component: TiposDeCompetenciasFormComponent
-   } */
+   }
 ];
 
 @NgModule({

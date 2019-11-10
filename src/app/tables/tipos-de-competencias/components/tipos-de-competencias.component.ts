@@ -11,7 +11,7 @@ export class TiposDeCompetenciasComponent implements OnInit {
   constructor( private route: ActivatedRoute ) { }
 
   ngOnInit() {
-    this.tabla = this.route.snapshot.data['tiposDeCompetenciasData'];
+    this.tabla = this.route.snapshot.data['tipoDeCompetenciaData'];
     console.log('Esto es una prueba')
   }
 
