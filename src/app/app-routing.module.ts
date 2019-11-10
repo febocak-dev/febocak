@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'usuarios', loadChildren: () => import('./tables/usuarios/usuarios.module').then(m => m.UsuariosModule)},
   { path: 'categorias', loadChildren: './tables/categorias/categorias.module#CategoriasModule' },
   { path: 'clubes', loadChildren: () => import('./tables/clubes/clubes.module').then(m => m.ClubesModule) },
+  { path: 'tipos-de-competencias', loadChildren: () => import('./tables/tipos-de-competencias/tipos-de-competencias.module').then(m => m.TiposDeCompetenciasModule) },
   { path: 'competencias', loadChildren: () => import('./tables/competencias/competencias.module').then(m => m.CompetenciasModule) },
   { path: 'distancias', loadChildren: () => import('./tables/distancias/distancias.module').then(m => m.DistanciasModule) },
   { path: 'palistas', loadChildren: () => import('./tables/palistas/palistas.module').then(m => m.PalistasModule) },

@@ -1,0 +1,31 @@
+<div class="card mt-3">
+  <div class="card-header d-flex">
+    Tipos de competencias
+    <a routerLink="/tipos-de-competencias/add" class="text-primary ml-auto">
+      <i class="fa fa-plus-circle fa-2x"></i>
+    </a>
+  </div>
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th> tipo </th>
+      <th> Descripción </th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let registro of tabla">
+      <td routerLink="/tipos-de-competencias/edit/{{registro.id}}"> {{ registro.tipo }} </td>
+      <td routerLink="/tipos-de-competencias/edit/{{registro.id}}"> {{ registro.descripcion }} </td>
+      <td class="text-center">
+        <a routerLink="/tipos-de-competencias/delete/{{registro.id}}" class="text-danger">
+          <i class="fa fa-minus-circle fa-2x"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+
+</table>

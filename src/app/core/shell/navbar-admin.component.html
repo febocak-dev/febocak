@@ -28,6 +28,9 @@
 
           <a *ngIf="usuario.rol == 'Administración'" class="dropdown-item" routerLink="/categorias"
             routerLinkActive="active"> <strong>Categorías</strong> </a>
+          
+            <a *ngIf="usuario.rol == 'Administración'" class="dropdown-item" routerLink="/tipos-de-competencias"
+            routerLinkActive="active"> <strong>Tipos de competencias</strong> </a>
 
           <a *ngIf="usuario.rol == 'Administración'" class="dropdown-item" routerLink="/competencias"
             routerLinkActive="active"> <strong>Competencias</strong> </a>
