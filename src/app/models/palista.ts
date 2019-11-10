@@ -10,3 +10,5 @@ export interface PalistaI {
     seguro?: string;
     club?: string
 }
+
+// Faltaria el número de federado!?

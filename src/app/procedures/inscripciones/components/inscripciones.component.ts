@@ -12,6 +12,8 @@ export class InscripcionesComponent implements OnInit {
 
   ngOnInit() {
     this.tabla = this.route.snapshot.data['inscripcionData'];
+    console.table(this.tabla)
+    
   }
 
 }

@@ -1,0 +1,49 @@
+Reunión con Lucas.
+- Cuál es la finalidad de la reunión.
+  - Dar la cara, mostrarme, que vean que sigo comprometido con el proyecto.
+  - Retomar el ritmo de trabajo.
+  - Establecer próximos pasos a realizar.
+
+------------------
+Preguntas a Lucas:
+------------------
+  - El primer campo de la hoja de excel se refiere al número de federado?
+  - Entiendo que es un campo opcional.
+  - Necesito las distancias para las competencias de marathon.
+
+--------------------------------------------------------------------------------
+
+https://febocak.github.io/inscripciones/
+https://febocak.github.io/administracion/
+
+
+Pasos a realizar:
+1ero: 
+  - Probar las tablas
+    * Usuarios
+    * Clubes
+    * Categorías
+    * Crear Tipos de competencias (Medio Fondo, Marathon y velocidad)
+	* Distancias
+    * Competencias 
+ 
+2do:
+  - Probar tabla de palistas
+
+3ro
+  - Probar inscripciones
+
+
+--------------------------------------------------------------------------------
+Tareas:
+- Buscar datos del usuario de gitHub de FeBoCaK.
+- Mostar fecha de la versión en Home, para identificar que versión tenemos.
+- Repasar el proceso de despliegue.
+- Repasar el proceso de limpieza de datos.
+- Repasar el proceso de migración de datos.
+- Ajuestar campos a la tabla de clubes.
+- Respaldar datos de pruebas en una carpeta de datos dentro de los fuentes.
+
+--------------------------------------------------------------------------------
+
+

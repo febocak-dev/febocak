@@ -46,7 +46,7 @@ export class RestoreComponent implements OnInit {
       let numRegistros = verifyData ? verifyData.length : 0; 
       numRecordsInDB += numRegistros;
       console.log('tabla:', tabla, 'registros', numRegistros);
-      let datos = JSON.stringify(this.datos[tabla])
+      // let datos = JSON.stringify(this.datos[tabla])
     }
     console.log('numRecordsInDB', numRecordsInDB)
 

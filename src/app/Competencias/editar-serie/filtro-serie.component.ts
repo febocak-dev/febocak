@@ -80,7 +80,7 @@ export class FiltroSerieComponent implements OnInit {
       {
         genero: this.genero.value,
         categoria: this.categoria.value,
-        distancia: this.distancia.value + ' m'
+        distancia: this.distancia.value     //+ ' m'
       }
     );
   }
