@@ -13,6 +13,7 @@
       <th> Desde </th>
       <th> Hasta </th>
       <th> Competencia </th>
+      <th> Tipo </th>
       <th> Club </th>
       <th> </th>
     </tr>
@@ -23,6 +24,7 @@
       <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.desde | date :'dd-MMM-yyyy' }} </td>
       <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.hasta | date :'dd-MMM-yyyy' }} </td>
       <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.competencia }} </td>
+      <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.tipoDeCompetencia }} </td>
       <td routerLink="/competencias/edit/{{registro.id}}"> {{ registro.club }} </td>
       <td class="text-center">
         <a routerLink="/competencias/delete/{{registro.id}}" class="text-danger">

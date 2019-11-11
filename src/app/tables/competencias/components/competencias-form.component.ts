@@ -9,6 +9,7 @@ import { ArrayService } from '@services/array.service';
 
 import { ClubI } from '@models/club';
 import { CompetenciaI } from '@models/competencia';
+import { TipoDeCompetenciaI } from '@models/tipo-de-competencia';
 
 @Component({
   selector: 'app-competencias-form',
@@ -19,6 +20,7 @@ export class CompetenciasFormComponent implements OnInit {
   templateData = { titulo: '', cardHeaderStyle: '', id: '' };
   miForm: FormGroup;
   tblClubes: ClubI[];
+  tblTipos: TipoDeCompetenciaI[];
 
   constructor(
     private crudService: CrudService, 
@@ -33,6 +35,7 @@ export class CompetenciasFormComponent implements OnInit {
   ngOnInit() {
     this.msg.clearMessages();
     this.tblClubes = this.actRoute.snapshot.data['competenciaData'][1];
+    this.tblTipos = this.actRoute.snapshot.data['competenciaData'][2];
 
     const action = this.actRoute.snapshot.paramMap.get('action');
     this.templateData.titulo = this.getTitle(action);
@@ -50,7 +53,8 @@ export class CompetenciasFormComponent implements OnInit {
       desde: ['', [Validators.required] ],
       hasta: ['', [Validators.required] ],
       competencia: ['', [Validators.required, Validators.minLength(3)] ],
-      club: ['', [Validators.required]]
+      tipoDeCompetencia: ['', [Validators.required] ],
+      club: ['', [Validators.required] ]
     });
   }
 
@@ -59,6 +63,7 @@ export class CompetenciasFormComponent implements OnInit {
     this.miForm.patchValue(record);
     if (this.templateData.titulo==='Eliminar') {
       this.miForm.controls.club.disable();
+      this.miForm.controls.tipoDeCompetencia.disable();
     }
   }
 
@@ -70,6 +75,9 @@ export class CompetenciasFormComponent implements OnInit {
   }
   get competencia() {
     return this.miForm.get('competencia');
+  }
+  get tipoDeCompetencia() {
+    return this.miForm.get('tipoDeCompetencia');
   }
   get club() {
     return this.miForm.get('club');
@@ -136,7 +144,7 @@ export class CompetenciasFormComponent implements OnInit {
   }
 
   validations(record) {
-    const tabla = this.actRoute.snapshot.data['competenciaData'][2];
+    const tabla = this.actRoute.snapshot.data['competenciaData'][3];
     const errorMessages = [];
     errorMessages.push('Ya hay otro registro con el mismo valor para el campo desde');
     errorMessages.push('Ya hay otro registro con el mismo valor para el campo hasta');
