@@ -9,9 +9,9 @@ import { DistanciasFormComponent } from './components/distancias-form.component'
 
 const routes: Routes = [
   { path: '', component: DistanciasComponent },
-  { path: ':idCompetencia', resolve: { distanciaData: DistanciasResolver }, component: DistanciasComponent },
-  { path: ':idCompetencia/:action', resolve: { distanciaData: DistanciasFormResolver }, component: DistanciasFormComponent },
-  { path: ':idCompetencia/:action/:id', resolve: { distanciaData: DistanciasFormResolver }, component: DistanciasFormComponent }
+  { path: ':idTipoDeCompetencia', resolve: { distanciaData: DistanciasResolver }, component: DistanciasComponent },
+  { path: ':idTipoDeCompetencia/:action', resolve: { distanciaData: DistanciasFormResolver }, component: DistanciasFormComponent },
+  { path: ':idTipoDeCompetencia/:action/:id', resolve: { distanciaData: DistanciasFormResolver }, component: DistanciasFormComponent }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

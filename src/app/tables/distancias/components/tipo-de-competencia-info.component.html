@@ -1,12 +1,11 @@
 <div class="card mt-3">
   <div class="card-header">
-    Compentencia
+    Tipo de compentencia
   </div>
 
   <div class="card-body">
-    <p>{{ competencia.competencia }}</p>
-    <p>Desde: {{ competencia.desde }} hasta: {{ competencia.hasta }} </p>
-    <p>{{ competencia.club }}</p>
+    <p>{{ tCompetencia.tipo }}</p>
+    <p>{{ tCompetencia.descripcion }}</p>
     
     <button class="btn btn-block btn-secondary" (click)="goBack()">
       Regresar

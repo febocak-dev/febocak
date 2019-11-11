@@ -7,7 +7,7 @@ import { MessageService } from '@core/message/message.service';
 import { CrudService } from '@services/crud.service';
 import { ArrayService } from '@services/array.service';
 
-import { CompetenciaI } from '@models/competencia';
+import { TipoDeCompetenciaI } from '@models/tipo-de-competencia';
 import { CategoriaI } from '@models/categoria';
 
 @Component({
@@ -19,7 +19,7 @@ export class DistanciasFormComponent implements OnInit {
   templateData = { titulo: '', cardHeaderStyle: '', id: '' };
   miForm: FormGroup;
 
-  competencia: CompetenciaI;
+  tCompetencia: TipoDeCompetenciaI;
   tblCategoria: CategoriaI[];
 
   constructor(
@@ -34,8 +34,9 @@ export class DistanciasFormComponent implements OnInit {
 
   ngOnInit() {
     this.msg.clearMessages();
-    this.competencia = { 
-      id: this.actRoute.snapshot.paramMap.get('idCompetencia'),
+    const data = this.actRoute.snapshot.data['distanciaData']
+    this.tCompetencia = { 
+      id: this.actRoute.snapshot.paramMap.get('idTipoDeCompetencia'),
       ...this.actRoute.snapshot.data['distanciaData'][0]
     };
     this.tblCategoria = this.actRoute.snapshot.data['distanciaData'][1];
@@ -61,7 +62,7 @@ export class DistanciasFormComponent implements OnInit {
   }
 
   setFormData() {
-    const record = this.competencia.distancia[this.templateData.id];
+    const record = this.tCompetencia.distancia[this.templateData.id];
     this.miForm.patchValue(record);
     if (this.templateData.titulo==='Eliminar') {
       this.miForm.controls.categoria.disable();
@@ -97,19 +98,19 @@ export class DistanciasFormComponent implements OnInit {
       embarcacion: this.miForm.controls.embarcacion.value,
       distancia: this.miForm.controls.distancia.value,
     }
-    if (!this.competencia.distancia) {
-      this.competencia = {...this.competencia, distancia: [objDistancia]}
+    if (!this.tCompetencia.distancia) {
+      this.tCompetencia = {...this.tCompetencia, distancia: [objDistancia]}
     } else if (parAccion === 'Agregar') {
-      this.competencia.distancia.push(objDistancia)
+      this.tCompetencia.distancia.push(objDistancia)
     } else if (parAccion === 'Modificar') {
-      this.competencia.distancia.splice(+this.templateData.id, 1, objDistancia)
+      this.tCompetencia.distancia.splice(+this.templateData.id, 1, objDistancia)
     } else if (parAccion === 'Eliminar') {
-      this.competencia.distancia.splice(+this.templateData.id, 1)
+      this.tCompetencia.distancia.splice(+this.templateData.id, 1)
     }
   }
 
   guardar() {
-    this.crudService.updateRecord$('competencias', this.competencia.id, this.competencia).subscribe(
+    this.crudService.updateRecord$('tipos-de-competencias', this.tCompetencia.id, this.tCompetencia).subscribe(
       _ => this.msg.ok(this.miForm.controls['distancia'].value + ' Actualizado satisfactoriamente'),
       error => this.msg.error('Error al actualizar los datos: ' + error.statusText),
       () => this.goBack()
@@ -131,7 +132,7 @@ export class DistanciasFormComponent implements OnInit {
   }
 
   validations(record) {
-    const tabla = this.competencia.distancia;
+    const tabla = this.tCompetencia.distancia ? this.tCompetencia.distancia : [];
     const errorMessages = [];
     errorMessages.push('Ya hay otro registro con los mismos valores para los campos categoria, embarcación y distancia');
     const objSearch = [];

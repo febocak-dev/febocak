@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CategoriaI } from 'src/app/models/categoria';
-import { DistanciaI, CompetenciaI } from 'src/app/models/competencia';
+import { CompetenciaI } from '@models/competencia';
+import { DistanciaI } from '@models/distancia';
 import { CrudService } from '@services/crud.service';
 import { ArrayService } from '@services/array.service';
 

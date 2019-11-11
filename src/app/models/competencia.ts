@@ -1,3 +1,5 @@
+import { DistanciaI } from './distancia';
+
 export interface CompetenciaI {
   id?: string;
   idCompetencia?: string;
@@ -7,10 +9,4 @@ export interface CompetenciaI {
   club?: string;
   status?: string;
   distancia?: DistanciaI[];
-}
-
-export interface DistanciaI {
-    categoria: string;
-    embarcacion: string;
-    distancia: string;
 }

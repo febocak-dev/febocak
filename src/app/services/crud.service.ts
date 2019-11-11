@@ -70,6 +70,7 @@ export class CrudService {
   }
 
   updateRecord$<T extends RecordI>(tableName: string, id: string, registro: T) {
+    
     return from(this.afs.doc<T>(`${tableName}/${id}`).update(registro)).pipe(
       catchError(this.handleError)
     );

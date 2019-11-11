@@ -6,10 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DistanciasComponent } from './components/distancias.component';
 import { DistanciasFormComponent } from './components/distancias-form.component';
-import { CompetenciaInfoComponent } from './components/competencia-info.component';
+import { TipoDeCompetenciaInfoComponent } from './components/tipo-de-competencia-info.component';
 
 @NgModule({
-  declarations: [ DistanciasComponent, DistanciasFormComponent, CompetenciaInfoComponent ],
+  declarations: [ DistanciasComponent, DistanciasFormComponent, TipoDeCompetenciaInfoComponent ],
   imports: [
     CommonModule, DistanciasRoutingModule,
     FormsModule, ReactiveFormsModule

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { CompetenciaI } from '@models/competencia';
-import { DistanciaI } from '@models/competencia';
+import { TipoDeCompetenciaI } from '@models/tipo-de-competencia';
+import { DistanciaI } from '@models/distancia';
 
 @Component({
   selector: 'app-distanciass',
@@ -10,17 +10,16 @@ import { DistanciaI } from '@models/competencia';
   styles: []
 })
 export class DistanciasComponent implements OnInit {
-  competencia: CompetenciaI;
+  tCompetencia: TipoDeCompetenciaI;
   tabla: DistanciaI[];
   constructor( private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.competencia = { 
-      id: this.route.snapshot.paramMap.get('idCompetencia'),
+    this.tCompetencia = { 
+      id: this.route.snapshot.paramMap.get('idTipoDeCompetencia'),
       ...this.route.snapshot.data['distanciaData']
     };
-    this.tabla = this.competencia.distancia;
+    this.tabla = this.tCompetencia.distancia;
   }
-
   
 }

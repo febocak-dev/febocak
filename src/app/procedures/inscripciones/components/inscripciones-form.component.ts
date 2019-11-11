@@ -10,7 +10,7 @@ import { ClubI } from '@models/club';
 import { PalistaI } from '@models/palista';
 import { CategoriaI } from '@models/categoria';
 import { InscripcionI } from '@models/inscripcion';
-import { DistanciaI } from '@models/competencia';
+import { DistanciaI } from '@models/distancia';
 import { ArrayService } from '@services/array.service';
 
 @Component({

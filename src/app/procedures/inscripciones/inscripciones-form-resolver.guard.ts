@@ -7,7 +7,8 @@ import { ClubI } from '@models/club';
 import { InscripcionI } from '@models/Inscripcion';
 import { CategoriaI } from '@models/categoria';
 import { PalistaI } from '@models/palista';
-import { DistanciaI, CompetenciaI } from '@models/competencia';
+import { CompetenciaI } from '@models/competencia';
+import { DistanciaI } from '@models/distancia';
 
 import { Observable, forkJoin } from 'rxjs';
 import { map, tap, switchMap, first } from 'rxjs/operators';
