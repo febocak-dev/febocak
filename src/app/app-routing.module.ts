@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: 'importar-inscripciones', loadChildren: () => import('./competencias/importar-inscripciones/importar-inscripciones.module').then(m => m.ImportarInscripcionesModule)},
   { path: 'generar-series', loadChildren: () => import('./competencias/generar-series/generar-series.module').then(m => m.GenerarSeriesModule)},
   { path: 'editar-serie', loadChildren: () => import('./competencias/editar-serie/editar-serie.module').then(m => m.EditarSerieModule)},
+  { path: 'copiar-distancias', loadChildren: () => import('./util/copiar-distancias/copiar-distancias.module').then(m => m.CopiarDistanciasModule) },
   // { path: '**', component: NotFoundComponent }
   //{ path: '', redirectTo: '/', pathMatch: 'full' }
 ];
