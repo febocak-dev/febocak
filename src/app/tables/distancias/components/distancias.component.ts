@@ -16,8 +16,8 @@ export class DistanciasComponent implements OnInit {
 
   ngOnInit() {
     this.tCompetencia = { 
-      id: this.route.snapshot.paramMap.get('idTipoDeCompetencia'),
-      ...this.route.snapshot.data['distanciaData']
+      ...this.route.snapshot.data['distanciaData'],
+      id: this.route.snapshot.paramMap.get('idTipoDeCompetencia')
     };
     this.tabla = this.tCompetencia.distancia;
   }
