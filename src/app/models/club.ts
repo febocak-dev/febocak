@@ -2,6 +2,9 @@ export interface ClubI {
     id?: string;
     nombre?: string;
     descripcion?: string;
+    telefono?: string;
+    direccion?: string;
+    email?: string;
     delegado?: string;
     entrenador?: string;
     imageUrl?: string

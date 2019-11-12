@@ -46,6 +46,9 @@ export class ClubesFormComponent implements OnInit {
     this.miForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       descripcion: ['', [Validators.required, Validators.minLength(3)]],
+      direccion: [''],
+      telefono: [''],
+      email: [''],
       delegado: ['', [Validators.required, Validators.minLength(3)]],
       entrenador: ['', [Validators.required, Validators.minLength(3)]]
     });
@@ -62,6 +65,15 @@ export class ClubesFormComponent implements OnInit {
   }
   get descripcion() {
     return this.miForm.get('descripcion');
+  }
+  get direccion() {
+    return this.miForm.get('direccion');
+  }
+  get telefono() {
+    return this.miForm.get('telefono');
+  }
+  get email() {
+    return this.miForm.get('email');
   }
   get delegado() {
     return this.miForm.get('delegado');
