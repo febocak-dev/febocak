@@ -11,20 +11,26 @@ import { CompetenciaI } from '@models/competencia';
 import { DistanciaI } from '@models/distancia';
 
 import { Observable, forkJoin } from 'rxjs';
-import { map, tap, switchMap, first } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InscripcionesFormResolver 
-    implements Resolve<[InscripcionI, ClubI[], CategoriaI[], PalistaI[], InscripcionI[], CompetenciaI]> {
+    implements Resolve<[InscripcionI, ClubI[], CategoriaI[], PalistaI[], InscripcionI[], DistanciaI[] ]> {
 
   constructor(private crudService: CrudService, private authService: AuthService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
-    Observable<[InscripcionI, ClubI[], CategoriaI[], PalistaI[], InscripcionI[], CompetenciaI]> {
-    //TODO: el ID de competencia está fijo. Colocar el que corresponda
-    const competencia = this.crudService.getRecord$<CompetenciaI>('consola','01');
+    Observable<[InscripcionI, ClubI[], CategoriaI[], PalistaI[], InscripcionI[], DistanciaI[] ]> {
+    
+
+    const distancias$: Observable<DistanciaI[]> = this.crudService.getRecord$<CompetenciaI>('consola', '01').pipe(
+      map( data => data.idCompetencia.trim()),
+      mergeMap(idCompetencia => this.crudService.getRecord$<CompetenciaI>('competencias', idCompetencia)),
+      map(competencia => competencia.distancia as DistanciaI[])
+      );
+
     const club = this.authService.getUser().club;
     const id = route.paramMap.get('id');
     const allData$ = forkJoin(
@@ -33,7 +39,7 @@ export class InscripcionesFormResolver
       this.crudService.getAllRecords$('categorias','desde'),
       this.crudService.queryByField$('palistas','club',club),
       this.crudService.queryByField$('inscripciones','club',club),
-      this.crudService.getRecord$('competencias','lJBIk7KClZmifrIrSysT')
+      distancias$
     );
     
     return allData$;

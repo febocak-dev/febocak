@@ -12,6 +12,8 @@ import { CategoriaI } from '@models/categoria';
 import { InscripcionI } from '@models/inscripcion';
 import { DistanciaI } from '@models/distancia';
 import { ArrayService } from '@services/array.service';
+import { CompetenciaI } from '@models/competencia';
+import { map, switchMap, tap, mergeMap, concatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-inscripciones-form',
@@ -41,6 +43,7 @@ export class InscripcionesFormComponent implements OnInit {
 
   ngOnInit() {
     this.msg.clearMessages();
+    
     this.tblClubes = this.actRoute.snapshot.data['inscripcionData'][1];
     this.tblCategorias = this.actRoute.snapshot.data['inscripcionData'][2];
     this.tblPalistas = this.actRoute.snapshot.data['inscripcionData'][3];
@@ -121,7 +124,6 @@ export class InscripcionesFormComponent implements OnInit {
   }
   
   aceptarAgregar(record: PalistaI) {
-    console.log('TCL: InscripcionesFormComponent -> aceptarAgregar -> record', record)
     
     this.crudService.addRecord$('inscripciones', record).subscribe(
       _ => this.msg.ok(record.nombre.trim() + ' ' + record.apellido + ' Agregado satisfactoriamente'),
@@ -181,7 +183,7 @@ export class InscripcionesFormComponent implements OnInit {
   }
 
   distanciasDeLaCategoria(categoria: string) {
-    let todasLasDistancias = this.actRoute.snapshot.data['inscripcionData'][5].distancia;
+    let todasLasDistancias = this.actRoute.snapshot.data['inscripcionData'][5];
     return todasLasDistancias.filter( data => data.categoria === categoria);
   }
 
