@@ -100,7 +100,7 @@ export class PalistasFormComponent implements OnInit {
      palista: this.miForm.controls.nombre.value.trim() + ' ' + this.miForm.controls.apellido.value,
       ...this.miForm.value };
 
-    if (!this.validations(record)) {
+    if (this.templateData.titulo !== 'Eliminar' && !this.validations(record)) {
       submitBtn.disabled = false;
       return;
     }

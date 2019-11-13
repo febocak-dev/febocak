@@ -66,7 +66,7 @@ export class TiposDeCompetenciasFormComponent implements OnInit {
     submitBtn.disabled = true;
     const record = { id: this.templateData.id,...this.miForm.value }
 
-    if (!this.validations(record)) {
+    if (this.templateData.titulo !== 'Eliminar' && !this.validations(record)) {
       submitBtn.disabled = false;
       return;
     }
