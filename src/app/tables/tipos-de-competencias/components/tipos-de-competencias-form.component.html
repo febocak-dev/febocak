@@ -22,7 +22,7 @@
             <input type="text" formControlName="descripcion" maxlength="80" [readonly]="templateData.titulo==='Eliminar'"
               [class.is-invalid]="descripcion.invalid && descripcion.touched" class="form-control" />
             <small class="text-danger" [class.d-none]="descripcion.untouched || !descripcion.hasError('required')">La descripción es requerida</small>
-            <small class="text-danger" [class.d-none]="descripcion.untouched || !descripcion.hasError('minlength')">La longitud mínima es 3</small>
+            <small class="text-danger" [class.d-none]="descripcion.untouched || !descripcion.hasError('minlength')">La longitud mínima es 10</small>
           </div>
 
           <div class="row">
