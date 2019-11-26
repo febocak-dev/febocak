@@ -52,7 +52,8 @@ export class PalistasFormComponent implements OnInit {
 
   buildForm() {
     this.miForm = this.fb.group({
-      dni: ['', [Validators.required, Validators.minLength(3) ] ],
+      dni: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^\d+$/) ] ],
+      numero: ['', [Validators.minLength(8), Validators.maxLength(8), Validators.pattern(/^\d+$/) ] ],
       apellido: ['', [Validators.required, Validators.minLength(2)] ],
       nombre: ['', [Validators.required, Validators.minLength(2)] ],
       fnacimiento: ['', [Validators.required] ],
@@ -73,6 +74,9 @@ export class PalistasFormComponent implements OnInit {
 
   get dni() {
     return this.miForm.get('dni');
+  }
+  get numero() {
+    return this.miForm.get('numero');
   }
   get apellido() {
     return this.miForm.get('apellido');
@@ -175,6 +179,10 @@ export class PalistasFormComponent implements OnInit {
     const objSearch = [];
     objSearch.push({ nombre: record.nombre, apellido: record.apellido });
     objSearch.push({ dni: record.dni });
+    if (!!record.numero) {
+      errorMessages.push('Ya hay otro registro con el mismo Número de Federado');
+      objSearch.push({ numero: record.numero });
+    }
 
     for (let i = 0; i < objSearch.length; i++) {
       const encontro = this.arrayService.find(tabla, objSearch[i]);

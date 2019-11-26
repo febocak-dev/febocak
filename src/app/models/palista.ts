@@ -1,6 +1,7 @@
 export interface PalistaI {
     id?: string;
     dni?: string;
+    numero?: string;
     palista?: string;
     apellido?: string;
     nombre?: string;

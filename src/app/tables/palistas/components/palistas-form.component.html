@@ -9,6 +9,28 @@
 
       <div class="card-body">
         <form [formGroup]="miForm" (ngSubmit)="onSubmit(submitBtn)">
+          <div class="row">
+            <div class="col-2">
+              <label for="DNI" class="control-label"> DNI </label>
+            </div>
+            <div class="col-4">
+                <input type="text" formControlName="dni" [readonly]="templateData.titulo==='Eliminar'" required maxlength="8"
+                  [class.is-invalid]="dni.invalid && dni.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="dni.untouched || !dni.hasError('required')">El DNI es requerido</small>
+                <small class="text-danger" [class.d-none]="dni.untouched || !dni.hasError('minlength')">La longitud debe ser de 8 dígitos</small>
+                <small class="text-danger" [class.d-none]="dni.untouched || !dni.hasError('pattern')">Debe ingresar solo dígitos</small>
+            </div>
+            <div class="col-2">
+              <label for="numero" class="control-label"> Nro </label>
+            </div>
+            <div class="col-4">
+                <input type="text" formControlName="numero" [readonly]="templateData.titulo==='Eliminar'" maxlength="8"
+                  [class.is-invalid]="numero.invalid && numero.touched" class="form-control" />
+                <small class="text-danger" [class.d-none]="numero.untouched || !numero.hasError('required')">El número de federado es requerido</small>
+                <small class="text-danger" [class.d-none]="numero.untouched || !numero.hasError('minlength')">La longitud debe ser de 8 dígitos</small>
+                <small class="text-danger" [class.d-none]="numero.untouched || !numero.hasError('pattern')">Debe ingresar solo dígitos</small>
+            </div>
+          </div>
 
           <div class="row">
             <div class="col col-6">
@@ -37,19 +59,8 @@
           </div>
 
           <div class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <label for="DNI" class="control-label"> DNI </label>
-                <input type="text" formControlName="dni" [readonly]="templateData.titulo==='Eliminar'" required maxlength="8"
-                  [class.is-invalid]="dni.invalid && dni.touched" class="form-control" />
-                <small class="text-danger" [class.d-none]="dni.untouched || !dni.hasError('required')">El DNI es
-                  requerido</small>
-                <small class="text-danger" [class.d-none]="dni.untouched || !dni.hasError('minlength')">La longitud
-                  mínima es 8</small>
-              </div>
-            </div>
 
-            <div class="col-6">
+            <div class="col-4">
               <div class="form-group">
                 <label for="genero" class="control-label"> Genero </label>
                 <select formControlName="genero" required (change)="buscarCategoria(fnacimiento.value, genero.value)"
@@ -65,10 +76,7 @@
               </div>
             </div>
 
-          </div>
-
-          <div class="row">
-            <div class="col-6">
+            <div class="col-4">
               <div class="form-group">
                 <label for="fnacimiento" class="control-label"> F. nacimiento </label>
                 <input type="date" formControlName="fnacimiento" [readonly]="templateData.titulo==='Eliminar'" required
@@ -79,7 +87,7 @@
               </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-4">
               <div class="form-group">
                 <label for="categoria" class="control-label"> Categoría </label>
                 <input type="text" formControlName="categoria" [readonly]="true" required
@@ -89,6 +97,7 @@
                   requerida</small>
               </div>
             </div>
+
           </div>
 
           <div class="form-group">
