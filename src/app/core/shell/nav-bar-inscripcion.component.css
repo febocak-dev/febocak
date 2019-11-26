@@ -1,0 +1,8 @@
+.navbar-brand h4, .navbar-brand h6 {
+  margin-block-end: 0;
+}
+
+nav.navbar {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}

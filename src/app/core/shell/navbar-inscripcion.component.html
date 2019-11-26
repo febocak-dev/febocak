@@ -3,6 +3,7 @@
   <a class="navbar-brand" routerLink="/home">
     <h4> <strong>SISRIRCO</strong> - Inscripciones </h4>
     <h6> <strong>FeBoCaK</strong> Federación Bonairense de Canoas y Kayaks</h6>
+    <h6 *ngIf="!!usuario"> <strong>{{ usuario.club }}</strong></h6>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu"
     aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
