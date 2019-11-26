@@ -36,8 +36,8 @@ export class DistanciasFormComponent implements OnInit {
     this.msg.clearMessages();
     const data = this.actRoute.snapshot.data['distanciaData']
     this.tCompetencia = { 
-      id: this.actRoute.snapshot.paramMap.get('idTipoDeCompetencia'),
-      ...this.actRoute.snapshot.data['distanciaData'][0]
+      ...this.actRoute.snapshot.data['distanciaData'][0],
+      id: this.actRoute.snapshot.paramMap.get('idTipoDeCompetencia')
     };
     this.tblCategoria = this.actRoute.snapshot.data['distanciaData'][1];
     this.tblCategoria = this.arrayService.sort(this.tblCategoria, ['desde'])
