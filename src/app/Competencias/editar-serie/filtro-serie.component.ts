@@ -36,7 +36,6 @@ export class FiltroSerieComponent implements OnInit {
       // Esto implica guardar las distancias en la tabla consola al exportar los datos
       // Esto implica no exportar las tablas competencias y distancias 
       this.tblDistancias = this.arrayService.groupAndFlat(data[2].distancia, ['embarcacion','distancia']);
-      console.log('TCL: FiltroSerieComponent -> ngOnInit -> this.tblDistancias', this.tblDistancias)
       
     });
 

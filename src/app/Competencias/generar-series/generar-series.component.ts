@@ -54,12 +54,10 @@ export class GenerarSeriesComponent implements OnInit {
             return aValue === bValue ? 0 : aValue > bValue ? -1 : 1;
           }
         );
-        console.log('inscripciones ordenadas:', this.inscripciones);
 
         this.generarClubes();
         this.generarSeries();
         this.generarFinalesYsemis();
-        console.log(this.grupoSeries);
       }
     )
   }
@@ -153,7 +151,6 @@ export class GenerarSeriesComponent implements OnInit {
       }
     ];
 
-    console.log("TCL: GenerarSeriesComponent -> generarFinalesYsemis -> grupoSeries", this.grupoSeries)
     for (let i = 0; i < this.grupoSeries.length; i++) {
       let el = this.grupoSeries[i];
       for (let j = 0; j < condiciones.length; j++) {
@@ -169,7 +166,6 @@ export class GenerarSeriesComponent implements OnInit {
     this.grupoSeries.forEach( el => {
       if (!!el.carreras) {
         for ( let i = 0; i < el.carreras.semis; i++) {
-          console.log('Pasó por aqui');
           contadorSemis++;
           this.semis.push({ 
             id: 'S' + contadorSemis.toString().padStart(3, '0'),

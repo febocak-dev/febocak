@@ -45,16 +45,13 @@ export class RestoreComponent implements OnInit {
       let verifyData = await this.verifyTabla(tabla);
       let numRegistros = verifyData ? verifyData.length : 0; 
       numRecordsInDB += numRegistros;
-      console.log('tabla:', tabla, 'registros', numRegistros);
       // let datos = JSON.stringify(this.datos[tabla])
     }
-    console.log('numRecordsInDB', numRecordsInDB)
 
     if (numRecordsInDB === 0) {
       this.tablas.forEach( async tabla => {
         let datos = [...this.datos[tabla]];
-        console.log(tabla);
-        datos.forEach( record => {
+        console.log(tabla);        datos.forEach( record => {
           this.crudService.setRecord$(tabla, record);
         });
       }); 

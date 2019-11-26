@@ -16,11 +16,9 @@ export class DetalleClubComponent implements OnInit {
 
   ngOnInit() {
     const entidad = this.actRoute.snapshot.paramMap.get('entidad');
-    console.log('TCL: DetalleClubComponent -> ngOnInit -> entidad', entidad)
     this.palistas = this.shareDataService.getData('palistas');
     
     this.palistas = this.palistas.filter(el => el.ENTIDAD === entidad);
-    console.log('TCL: DetalleClubComponent -> ngOnInit -> this.palistas', this.palistas)
   }
 
 }

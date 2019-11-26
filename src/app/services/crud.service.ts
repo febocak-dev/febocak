@@ -81,7 +81,6 @@ export class CrudService {
   }
 
   private handleError(err: any) {
-    console.log('handleError');
     console.error(err);
     // in a real world app, we may send the server to some remote logging infrastructure
     // instead of just logging it to the console

@@ -112,8 +112,6 @@ export class ArrayService {
   }
 
   findIndex(source: any[], objSearch: any) {
-    console.log('TCL: ArrayService -> findIndex -> objSearch', objSearch)
-    console.log('TCL: ArrayService -> findIndex -> source', source)
     const fields = Object.keys(objSearch);
 
     let searchCondition = this.concatFields(objSearch, fields);

@@ -27,12 +27,10 @@ export class LoginComponent implements OnInit {
   }
    
   onLogin() {
-    console.log(this.modulo);
     this.modulo === 'Competencias' ? this.onLoginLocalStorage() : this.onLoginFirebase();
   }
 
  onLoginFirebase() {
-   console.log('loginFireBase');
     this.msg.clearMessages();
     this.authService.login$(this.email, this.password).subscribe(
       () => this.router.navigate([this.retornar]),
@@ -41,11 +39,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginLocalStorage() {
-    console.log('localStorage');
     this.msg.clearMessages();
     this.authService.loginLocal$(this.email, this.password).subscribe(
       () => {
-        console.log('final')
         this.router.navigate([this.retornar])
       },
       error => this.msg.error('Error: Ocurrió un error, verifique el email y la contraseña')

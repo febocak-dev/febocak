@@ -162,7 +162,6 @@ export class UsuariosFormComponent implements OnInit {
   }
 
   validations(record) {
-    console.log('TCL: UsuariosFormComponent -> validations -> record', record)
     const tabla = this.actRoute.snapshot.data['usuarioData'][2];
     const errorMessages = [];
     errorMessages.push('Ya hay otro registro con este email');

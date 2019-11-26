@@ -48,7 +48,6 @@ export class ModalDownloadComponent implements OnInit {
     const clubes$ = this.exportarService.getClubes$();
     nombres.push('clubes');
 
-    console.log(this.competencia);
     const competencias$ = this.exportarService.getCompetencias$().pipe(
       map( data => data.filter( elemento => 
                                 elemento.club === this.competencia.club &&
@@ -59,7 +58,6 @@ export class ModalDownloadComponent implements OnInit {
 
     nombres.push('competencias');
     const consola$ = this.exportarService.getConsola$();
-    nombres.push('consola');
     const inscripciones$ = this.exportarService.getInscripciones$();
     nombres.push('inscripciones');
     const palistas$ = this.exportarService.getPalistas$();

@@ -29,10 +29,8 @@ export class EditarSerieComponent implements OnInit {
   }
 
   filtrarSeries(objFiltro) {
-    console.log('TCL: EditarSerieComponent -> filtrarSeries -> objFiltro', objFiltro)
     this.series = [];
     const arrSeriesPrueba = this.dataService.getSeries()
-    console.log('TCL: EditarSerieComponent -> filtrarSeries -> arrSeries', arrSeriesPrueba)
     
     const arrSeries: string[] = this.dataService.getSeries()
       .filter( elemento => elemento.genero === objFiltro.genero && elemento.categoria === objFiltro.categoria && elemento.distancia === objFiltro.distancia)
@@ -99,7 +97,6 @@ export class EditarSerieComponent implements OnInit {
         el.numero = (index+1).toString();
         return el;
       });
-      console.log(serie.serie, serie.detalleSerie);
       this.dataService.updateDetalleSeries(serie.serie, serie.detalleSerie);
       let nuevaSerie = this.dataService.getSerie(serie.serie);
       nuevaSerie.cantidad = serie.detalleSerie.length.toString();

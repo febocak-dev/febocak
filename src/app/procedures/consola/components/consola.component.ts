@@ -74,7 +74,6 @@ export class ConsolaComponent implements OnInit {
   }
 
   seleccionarCompetencia(registro: CompetenciaI){
-    console.log('seleccionarCompetencia',registro);
     if (registro) {
       this.establecerProximaCompetencia(registro);
     }
