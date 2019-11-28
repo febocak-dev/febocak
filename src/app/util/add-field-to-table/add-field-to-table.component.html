@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-header">
+    Agregar campo a una tabla
+  </div>
+  <div class="card-body">
+    <div>
+      <p>Este proceso agrega un campo a todos los documentos de una colección. 
+         Es importante que realice respaldo de los datos antes de realizar este proceso
+      </p>
+    </div>
+    <div class="row mt-3">
+      <div class="col-3 align-self-end">
+        <label for="tabla" class="control-label"> Nombre de la Tabla </label>
+      </div>
+      <div class="col-3">
+        <input type="text" class="form-control" [(ngModel)]="nomTabla"/>
+      </div>
+      <div class="col-3">
+        <label for="campo" class="control-label"> Nombre del campo </label>
+      </div>
+      <div class="col-3">
+        <input type="text" class="form-control" [(ngModel)]="nomCampo"/>
+      </div>
+    </div>
+    
+    <div class="row mt-3">
+      <div class="col-6">
+        <button class="btn btn-primary btn-block" (click)="onAddField()">
+          Aceptar
+        </button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-secondary btn-block" (click)="goBack()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
