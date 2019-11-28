@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card card-header mt-3">
+    Utilitarios del sitema
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-3">
+      <button class="btn btn-block btn-outline-primary" 
+        routerLink='backup' routerLinkActive="active">
+        Backup</button>
+      <button class="btn btn-block btn-outline-primary" 
+        routerLink='restore' routerLinkActive="active">
+        Restore</button>
+      <button class="btn btn-block btn-outline-primary" 
+        routerLink='importar-palistas' routerLinkActive="active">
+        Importar palistas</button>
+      <button class="btn btn-block btn-outline-primary" 
+        routerLink='copiar-distancias' routerLinkActive="active">
+        Copiar distancias</button>
+      <button class="btn btn-block btn-outline-primary" 
+        routerLink='add-field-to-table' routerLinkActive="active">
+        Agregar campo a una tabla</button>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
