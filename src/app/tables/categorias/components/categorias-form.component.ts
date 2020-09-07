@@ -19,10 +19,10 @@ export class CategoriasFormComponent implements OnInit {
   miForm: FormGroup;
 
   constructor(
-    private crudService: CrudService, 
-    private fb: FormBuilder,      
+    private crudService: CrudService,
+    private fb: FormBuilder,
     private msg: MessageService,
-    private location: Location, 
+    private location: Location,
     private actRoute: ActivatedRoute,
     private router: Router,
     private arrayService: ArrayService) {
@@ -81,7 +81,7 @@ export class CategoriasFormComponent implements OnInit {
       submitBtn.disabled = false;
       return;
     }
-    
+
     switch (this.templateData.titulo) {
       case 'Agregar':
         this.aceptarAgregar(record);
@@ -93,9 +93,9 @@ export class CategoriasFormComponent implements OnInit {
         this.aceptarEliminar(record);
         break;
     }
- 
+
   }
-  
+
   aceptarAgregar(record: CategoriaI) {
     this.crudService.addRecord$('categorias', record).subscribe(
       _ => this.msg.ok(this.miForm.controls['categoria'].value + ' Agregado satisfactoriamente'),
@@ -128,7 +128,7 @@ export class CategoriasFormComponent implements OnInit {
     const objTitle= {add:'Agregar', edit: 'Modificar', delete: 'Eliminar'};
     return objTitle[action];
   }
-  
+
   getClassHeader(action: string) {
     const objStyle = {add:'bg-primary', edit: 'bg-warning', delete: 'bg-danger'};
     return objStyle[action];
