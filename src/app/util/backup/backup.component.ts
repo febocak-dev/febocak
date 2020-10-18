@@ -12,7 +12,7 @@ import { merge } from 'rxjs';
 })
 export class BackupComponent implements OnInit {
   @Input() competencia: CompetenciaI;
-  @ViewChild('aDownload', {static: false}) aDownload: ElementRef;
+  @ViewChild('aDownload') aDownload: ElementRef;
   @Output() emitExportar = new EventEmitter<string>();
 
   downloadJsonHref;

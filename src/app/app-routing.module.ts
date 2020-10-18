@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthLocalGuard] },
   { path: 'redireccionar-login', component: RedireccionarLoginComponent },
   { path: 'usuarios', loadChildren: () => import('./tables/usuarios/usuarios.module').then(m => m.UsuariosModule)},
-  { path: 'categorias', loadChildren: './tables/categorias/categorias.module#CategoriasModule' },
+  { path: 'categorias', loadChildren: () => import('./tables/categorias/categorias.module').then(m => m.CategoriasModule) },
   { path: 'clubes', loadChildren: () => import('./tables/clubes/clubes.module').then(m => m.ClubesModule) },
   { path: 'tipos-de-competencias', loadChildren: () => import('./tables/tipos-de-competencias/tipos-de-competencias.module').then(m => m.TiposDeCompetenciasModule) },
   { path: 'competencias', loadChildren: () => import('./tables/competencias/competencias.module').then(m => m.CompetenciasModule) },

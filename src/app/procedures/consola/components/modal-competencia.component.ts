@@ -9,7 +9,7 @@ import { TipoDeCompetenciaI } from '@models/tipo-de-competencia';
   styles: []
 })
 export class ModalCompetenciaComponent implements OnInit {
-  @ViewChild('btClose', {static: false}) btClose: ElementRef;
+  @ViewChild('btClose') btClose: ElementRef;
   @Input() tabla: CompetenciaI[];
   @Output() emitSeleccionar = new EventEmitter<CompetenciaI>();
 
