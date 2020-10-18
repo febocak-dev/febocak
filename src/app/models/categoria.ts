@@ -3,5 +3,5 @@ export interface CategoriaI {
     desde?: number;
     hasta?: number;
     genero?: string;
-    categoria?: string
+    categoria?: string;
 }
